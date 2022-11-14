@@ -1,0 +1,22 @@
+<form autocomplete="off" (ngSubmit)="signIn()" [formGroup]="form">
+    <nz-form-item>
+        <nz-form-label>{{"email" | translate}}</nz-form-label>
+        <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+            <input nz-input type="email" [placeholder]="'email' | translate" nzSize="large"
+                formControlName="email" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label>{{"password" | translate}}</nz-form-label>
+        <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+            <input nz-input type="password" [placeholder]="'password' | translate" nzSize="large"
+                formControlName="password" />
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <button [disabled]="form.invalid" class="btn main-button">
+        {{ "login" | translate }}
+    </button>
+</form>

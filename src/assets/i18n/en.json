@@ -1,4 +1,14 @@
 {
   "en" : "EN",
-  "ar" : "AR"
+  "ar" : "AR",
+  "signIn" : "singIn",
+  "email" : "email" ,
+  "password" : "password",
+  "fullName" : "full name",
+  "mobileNumber" : "mobile number",
+  "confirmPassword" : "confirm password",
+  "gender" : "gender",
+  "dateOfBirth" : "Date Of Birth",
+  "chooseDate" : "Choose Date",
+  "register" : "register"
 }
