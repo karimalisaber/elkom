@@ -1,3 +1,4 @@
+import { LocalizationService } from './services/localization.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'elkom';
+  constructor(private localization: LocalizationService){
+    this.localization.setLanguage('ar')
+  }
 }
