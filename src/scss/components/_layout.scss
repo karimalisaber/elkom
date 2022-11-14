@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+html[lang="ar"] {
+    direction: rtl;
+}
+
+.rtl .mat-form-field-label-wrapper,
+.rtl .mat-select {
+    text-align: right !important;
+}
