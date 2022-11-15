@@ -17,5 +17,11 @@
   "_signup_desc2" : "simple steps away from creating your account",
   "teacher" : "teacher",
   "student" : "student",
-  "haveAccount" : "already have an account?"
+  "haveAccount" : "already have an account?",
+  "dashboard" : "dashboard",
+  "questions" : "questions",
+  "myQuestions" : "my questions",
+  "teachers" : "teachers",
+  "profile" : "profile",
+  "elkom" : "elkom"
 }
