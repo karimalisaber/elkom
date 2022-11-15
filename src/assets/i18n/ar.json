@@ -10,5 +10,6 @@
   "gender" : "الجنس",
   "dateOfBirth" : "تاريخ الميلاد",
   "chooseDate" : "اختر تاريخًا",
-  "register" : "تسجيل"
+  "register" : "تسجيل",
+  "userType" : "نوع المستخدم"
 }

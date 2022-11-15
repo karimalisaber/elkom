@@ -1,0 +1,21 @@
+.container{
+    background-image: url('/assets/imgs/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 3rem;
+}
+
+.imgs-wrapper{
+    margin: auto;
+    gap: 2rem;
+}
+
+.footer{
+    position: absolute;
+    bottom: 1rem;
+    right: 50%;
+    transform: translateX(50%);
+}

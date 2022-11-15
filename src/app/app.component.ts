@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor(private localization: LocalizationService){
-    this.localization.setLanguage('ar')
+    this.localization.setLanguage('en')
   }
 }

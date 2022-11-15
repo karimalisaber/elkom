@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="logo">
+        <img src="assets/imgs/logo.png" alt="logo">
+    </div>
+
+    <h1>{{'userType' | translate}}</h1>
+
+    <p>{{'_signup_desc1' | translate}}</p>
+    <p>{{'_signup_desc2' | translate}}</p>
+    <!-- <router-outlet></router-outlet> -->
+
+    <div class="d-flex flex-h-center imgs-wrapper">
+        <div class="item">
+            <img class="d-block" src="assets/imgs/auth/student.png" alt="student">
+            <button routerLink="/auth/signup/student" nz-button nzType="default">{{'student' | translate}}</button>
+        </div>
+
+        <div class="item">
+            <img class="d-block" src="assets/imgs/auth/teacher.png" alt="teacher">
+            <button routerLink="/auth/signup/teacher" nz-button nzType="default">{{'teacher' | translate}}</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>{{'haveAccount' | translate}}
+            <a routerLink="/auth/signin"> {{'signin' | translate}}</a>
+        </p>
+    </div>
+</div>

@@ -8,7 +8,14 @@
   "mobileNumber" : "mobile number",
   "confirmPassword" : "confirm password",
   "gender" : "gender",
-  "dateOfBirth" : "Date Of Birth",
-  "chooseDate" : "Choose Date",
-  "register" : "register"
+  "dateOfBirth" : "date of birth",
+  "chooseDate" : "choose date",
+  "register" : "register",
+  "userType" : "user type",
+
+  "_signup_desc1" : "choose the type of user you want to create an account",
+  "_signup_desc2" : "simple steps away from creating your account",
+  "teacher" : "teacher",
+  "student" : "student",
+  "haveAccount" : "already have an account?"
 }
