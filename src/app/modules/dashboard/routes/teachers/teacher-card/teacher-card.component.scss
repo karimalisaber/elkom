@@ -1,0 +1,21 @@
+.main-wrapper {
+    border: 1px solid cyan;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem ;
+}
+
+.footer {
+    display: flex;
+    gap: .5rem;
+
+    .item {
+        font-size: .7rem;
+        padding: .2rem .5rem;
+
+        &.vote {
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+    }
+}

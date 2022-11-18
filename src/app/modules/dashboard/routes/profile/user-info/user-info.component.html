@@ -1,0 +1,42 @@
+<form [nzGutter]="20" nz-row class="main-wrapper">
+    <div class="small-gap item w-100" nz-col nzSpan="12">
+        <label>{{"email" | translate}}</label>
+
+        <nz-form-item >
+            <nz-form-control class="w-100" nzErrorTip="'email'" nzHasFeedback>
+                <input  nz-input type="email" [placeholder]="'email' | translate" nzSize="large" formControlName="email" />
+            </nz-form-control>
+        </nz-form-item>    
+    </div>
+
+    <div class="item w-100" nz-col nzSpan="12">
+        <label>{{"fullName" | translate}}</label>
+
+        <nz-form-item>
+            <nz-form-control class="w-100" nzErrorTip="'fullName'" nzHasFeedback>
+                <input nz-input  [placeholder]="'fullName' | translate" nzSize="large" formControlName="fullName" />
+            </nz-form-control>
+        </nz-form-item>    
+    </div>
+
+
+    <div class="small-gap item w-100" nz-col nzSpan="12">
+        <label>{{"dateOfBirth" | translate}}</label>
+
+        <nz-form-item >
+            <nz-form-control class="w-100" nzErrorTip="'dateOfBirth'" nzHasFeedback>
+                <input  nz-input type="dateOfBirth" [placeholder]="'dateOfBirth' | translate" nzSize="large" formControlName="dateOfBirth" />
+            </nz-form-control>
+        </nz-form-item>    
+    </div>
+
+    <div class="item w-100" nz-col nzSpan="12">
+        <label>{{"mobileNumber" | translate}}</label>
+
+        <nz-form-item>
+            <nz-form-control class="w-100" nzErrorTip="'mobileNumber'" nzHasFeedback>
+                <input nz-input  [placeholder]="'mobileNumber' | translate" nzSize="large" formControlName="mobileNumber" />
+            </nz-form-control>
+        </nz-form-item>    
+    </div>
+</form>

@@ -1,0 +1,87 @@
+.tabs-container {
+	margin: 10px;
+	position: relative;
+	height: 50px;
+	padding: 0 2em;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	
+	.tag-item {
+		border: 1px solid #d9d9d9;
+		padding: 8px 18px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.ant-tag, .ant-tag a, .ant-tag a:hover {
+		font-weight: bold;
+		border-radius: 15px;
+		color: #5922bb6e;
+		border-color: #5922bb6e !important;
+		// background: $white-color;
+	}
+
+	.ant-tag-checkable-checked{
+		background: #5922bb6e !important;
+		// color: $white-color;
+	}
+
+}
+
+.tabs {
+	position: absolute;
+	height: 30px;
+	display: flex;
+	padding: 20px;
+	align-items: center;
+	flex-wrap: no-wrap;
+	transform: translateX(0px);
+	transition: transform 300ms ease-in-out;
+}
+
+
+
+.tab.active {
+	border-bottom-color: hotpink;
+	transition: all 300ms linear;
+}
+
+.change-btn {
+	height: 40px;
+	width: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #b5b5b5;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	background: white;
+	cursor: pointer;
+}
+
+.change-btn.hide {
+	cursor: not-allowed;
+	pointer-events: none;
+	color: #b5b5b5;
+}
+
+.change-btn.next {
+	right: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.change-btn.prev {
+	left: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+}

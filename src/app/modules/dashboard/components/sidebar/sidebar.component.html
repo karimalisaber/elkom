@@ -2,14 +2,14 @@
     <ul>
         <div class="logo">
             <img class="d-block" src="assets/imgs/logo.png" alt="student">
-           
+
             <p class="text-center">{{'elkom' | translate}}</p>
         </div>
 
 
         <li class="list-style-none">
 
-            <a routerLink="">
+            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/">
                 {{'dashboard' | translate}}
             </a>
         </li>
@@ -18,7 +18,7 @@
 
         <li class="list-style-none">
 
-            <a routerLink="">
+            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/questions">
                 {{'questions' | translate}}
             </a>
         </li>
@@ -26,7 +26,7 @@
 
         <li class="list-style-none">
 
-            <a routerLink="">
+            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/myquestions">
                 {{'myQuestions' | translate}}
             </a>
         </li>
@@ -34,7 +34,7 @@
 
         <li class="list-style-none">
 
-            <a routerLink="">
+            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/teachers">
                 {{'teachers' | translate}}
             </a>
         </li>
@@ -42,7 +42,7 @@
 
         <li class="list-style-none">
 
-            <a routerLink="">
+            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/profile">
                 {{'profile' | translate}}
             </a>
         </li>

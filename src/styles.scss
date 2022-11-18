@@ -16,6 +16,7 @@
 
 /* Generic – reset and/or normalize styles, box-sizing definition, etc. This is the first layer which generates actual CSS. */
 @import "generic/box-model";
+@import "generic/normalize";
 @import "generic/typography";
 
 /* Elements – styling for bare HTML elements (like H1, A, etc.). These come with default styling from the browser so we can redefine them here. */

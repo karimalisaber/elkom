@@ -1,0 +1,11 @@
+<section *ngIf="tags?.length" class="tabs-container">
+    <span class="change-btn prev" (click)="scrollTab(-1, tags)"  [class.hide]="atStart" >
+        &lsaquo;</span>
+
+    <div class="tabs" [ngStyle]="{'transform': abc }">
+        <nz-tag [(nzChecked)]="tag.selected" (nzCheckedChange)="checkChange($event, tags)" nzMode="checkable" class="tab tag-item"
+            *ngFor="let tag of tags">{{tag.title}}</nz-tag>
+    </div>
+
+        <span class="change-btn  next  "  [class.hide]="atEnd" (click)="scrollTab(1, tags)">&rsaquo;</span>
+</section>

@@ -1,3 +1,5 @@
+import { TeacherDetailsComponent } from './routes/teacher-details/teacher-details.component';
+import { QuestionDetailsComponent } from './routes/question-details/question-details.component';
 import { ProfileComponent } from './routes/profile/profile.component';
 import { TeachersComponent } from './routes/teachers/teachers.component';
 import { QuestionsComponent } from './routes/questions/questions.component';
@@ -9,23 +11,33 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', component: ContainerComponent
+    path: '', component: ContainerComponent, children: [
+      {
+        path: '', component: MainComponent
+      },
+      {
+        
+        path: 'questions', component: QuestionsComponent
+      },
+      {
+        path: 'questions/details', component: QuestionDetailsComponent
+      },
+
+      {
+        path: 'myquestions', component: QuestionsComponent
+      },
+      {
+        path: 'teachers', component: TeachersComponent
+      },
+      {
+        path: 'teachers/teacher', component: TeacherDetailsComponent
+      },
+      {
+        path: 'profile', component: ProfileComponent
+      },
+    ]
   },
-  {
-    path: 'dashboard', component: MainComponent
-  },
-  {
-    path: 'questions', component: QuestionsComponent
-  },
-  {
-    path: 'myquestions', component: QuestionsComponent
-  },
-  {
-    path: 'teachers', component: TeachersComponent
-  },
-  {
-    path: 'profile', component: ProfileComponent
-  },
+
 ];
 
 @NgModule({
