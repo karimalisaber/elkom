@@ -24,5 +24,10 @@
   "teachers" : "teachers",
   "profile" : "profile",
   "elkom" : "elkom",
-  "search" : "Search"
+  "search" : "search",
+  "askQuestion" : "ask question",
+  "questionDetails" : "question details",
+  "ask" : "ask",
+  "cancel" : "cancel",
+  "addImg" : "add image"
 }

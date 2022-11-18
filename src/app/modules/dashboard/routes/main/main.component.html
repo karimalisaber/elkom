@@ -1,3 +1,10 @@
 <app-tags></app-tags>
 
 <app-question-card></app-question-card>
+
+
+<div class="d-flex justify-content-center ask-question-wrapper">
+    <button (click)="openAskQuestionModal()" nzSize="large" nz-type="primary" nz-button class="text-center">
+        {{'askQuestion' | translate}}
+    </button>
+</div>

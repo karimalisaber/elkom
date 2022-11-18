@@ -23,6 +23,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { TeacherProfileComponent } from './routes/profile/teacher-profile/teacher-profile.component';
 import { StudentProfileComponent } from './routes/profile/student-profile/student-profile.component';
 import { UserInfoComponent } from './routes/profile/user-info/user-info.component';
+import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UserInfoComponent } from './routes/profile/user-info/user-info.componen
     TeacherDetailsComponent,
     TeacherProfileComponent,
     StudentProfileComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AskQuestionComponent
   ],
   imports: [
     CommonModule,

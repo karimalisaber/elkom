@@ -1,0 +1,96 @@
+<form nz-form [formGroup]="form" nzLayout="vertical">
+
+    <!-- Level -->
+    <nz-form-item>
+        <nz-form-label>الـصـف</nz-form-label>
+        <nz-form-control class="w-full" nzHasFeedback>
+            <nz-select
+            *ngIf="levels$ | async as levels"
+            formControlName="levelId"
+            (ngModelChange)="onLevelChange($event)">
+                <nz-option *ngFor="let option of levels" [nzLabel]="option.title" [nzValue]="option.id">
+                    {{option.title}}
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!-- Subject -->
+
+    <nz-form-item>
+        <nz-form-label>الـمــادة</nz-form-label>
+        <nz-form-control class="w-full" >
+            <nz-select
+            *ngIf="subjects$ | async as subjects"
+            formControlName="subjectId"
+            (ngModelChange)="onSubjectChange($event)">
+                <nz-option *ngFor="let option of subjects" [nzLabel]="option.title" [nzValue]="option.id">
+                    {{option.title}}
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+ 
+
+    <!-- Lecture -->
+    <nz-form-item>
+        <nz-form-label>اختار درس؟</nz-form-label>
+        <nz-form-control class="w-full" nzHasFeedback>
+            <input nz-input type="text" [placeholder]="'LECTURE' | translate" nzSize="large" formControlName="lectureId"
+                [nzAutocomplete]="lectureRef" />
+                
+            <nz-autocomplete  #lectureRef>
+                <ng-container *ngIf="lectures$ | async as lectures">
+                    <nz-auto-option *ngFor="let option of lectures"
+                        [nzLabel]="option.title" [nzValue]="option.id">
+                        {{option.title}}
+                    </nz-auto-option>
+                </ng-container>
+            </nz-autocomplete>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!-- Question Text -->
+    <nz-form-item>
+        <nz-form-label>{{"QUESTION_TEXT" | translate}}</nz-form-label>
+        <nz-form-control class="w-full" nzHasFeedback>
+            <input nz-input type="text" [placeholder]="'QUESTION_TEXT' | translate" nzSize="large"
+                formControlName="text" />
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <!-- Question Description -->
+    <nz-form-item>
+        <nz-form-label>{{"DESCRIPTION" | translate}}</nz-form-label>
+        <nz-form-control>
+            <textarea rows="4" formControlName="description" nz-input
+                [placeholder]="'ENTER_QUESTION_DESC' | translate"></textarea>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+        <div class="mt-5 space-y-5 teacher-list-parent">
+            <ng-container>
+                <div class="clearfix">
+                    <nz-upload nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8"
+                        [nzPreview]="handlePreview" nzName="file" [nzMultiple]="true"
+                        (nzChange)="onUploadChange($event)">
+                        <div>
+                            <!-- <span nz-icon nzType="plus"></span> -->
+                            <div style="margin-top: 8px">{{'addImg' | translate}}</div>
+                        </div>
+                    </nz-upload>
+
+                    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+                        (nzOnCancel)="previewVisible = false">
+                        <ng-template #modalContent>
+                            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                        </ng-template>
+                    </nz-modal>
+                </div>
+            </ng-container>
+        </div>
+    </nz-form-item>
+</form>
