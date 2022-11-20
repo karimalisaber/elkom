@@ -1,0 +1,13 @@
+.main-wrapper{
+    background: url('/assets/imgs/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    // padding: 10% 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .main-container{
+        margin: auto;
+        width: 60%;
+    }
+}

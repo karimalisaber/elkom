@@ -1,78 +1,86 @@
-<div>
+<div class="main-wrapper">
 
-    <div class="text-center">
-        <h2 nz-typography >{{"SIGNUP_TEACHER"| translate}}</h2>
-        <p nz-typography>{{"SIGNUP_HEADER" |translate}}</p>
+    <div class="main-container">
+
+        <div class="text-center">
+            <h2 nz-typography class="text-capitalize">{{"teacherSignup" | translate}}</h2>
+            <p nz-typography class="text-capitalize">{{"teacherSignupDetails" |translate}}</p>
+        </div>
+
+        <form nzLayout="vertical" nz-form [formGroup]="form" (submit)="signup()">
+
+            <nz-form-item>
+                <label>{{"fullName" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <input nz-input type="text" placeholder="{{ 'fullName' | translate }}" nzSize="large"
+                        formControlName="fullName" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item class="raw-field">
+                <label>{{"email" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <input nz-input type="email" placeholder="{{ 'email' | translate }}" nzSize="large"
+                        formControlName="email" />
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <nz-form-item>
+                <label>{{"mobileNumber" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <input nz-input type="text" placeholder="{{ 'mobileNumber' | translate }}" nzSize="large"
+                        formControlName="mobileNumber" />
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <nz-form-item>
+                <label>{{"password" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <input nz-input type="password" autocomplete="new-password"
+                        placeholder="{{ 'password' | translate }}" nzSize="large" formControlName="password" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <label>{{"confirmPassword" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <input nz-input type="password" placeholder="{{ 'confirmPassword' | translate }}" nzSize="large"
+                        formControlName="confirmPassword" />
+                </nz-form-control>
+            </nz-form-item>
+
+
+
+
+            <nz-form-item>
+                <label> {{"dateOfBirth" | translate}} </label>
+                <nz-form-control class="w-full" nzHasFeedback>
+                    <nz-date-picker class="w-full" nzSize="large" nzPlaceHolder="{{'chooseDate' | translate}}"
+                        formControlName="birthDate" nzInputReadOnly="true"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <label>{{"gender" | translate}}</label>
+                <nz-form-control class="w-full" nzHasFeedback>
+
+                    <nz-select nzPlaceHolder="{{ 'gender' | translate }}" nzSize="large" class="w-full"
+                        formControlName="gender">
+                        <nz-option [nzLabel]="'FEMALE' | translate" [nzValue]="2"></nz-option>
+                        <nz-option [nzLabel]="'MALE' | translate" [nzValue]="1"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <div class="btn-wrapper">
+
+                <button nz-button nzType="primary" class="text-center" nzSize="large">
+                    {{"register" | translate}}
+                </button>
+            </div>
+        </form>
     </div>
-
-    <form nzLayout="vertical" nz-form [formGroup]="form" (submit)="signup()">
-
-        <nz-form-item>
-            <nz-form-label>{{"fullName" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <input nz-input type="text" placeholder="{{ 'fullName' | translate }}" nzSize="large"
-                    formControlName="fullName" />
-            </nz-form-control>
-        </nz-form-item>
-
-        <nz-form-item class="raw-field">
-            <nz-form-label>{{"email" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <input nz-input type="email" placeholder="{{ 'email' | translate }}" nzSize="large"
-                    formControlName="email" />
-            </nz-form-control>
-        </nz-form-item>
-
-
-        <nz-form-item>
-            <nz-form-label>{{"mobileNumber" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <input nz-input type="text" placeholder="{{ 'mobileNumber' | translate }}" nzSize="large"
-                    formControlName="mobileNumber" />
-            </nz-form-control>
-        </nz-form-item>
-
-        
-        <nz-form-item>
-            <nz-form-label>{{"password" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <input nz-input type="password" autocomplete="new-password" placeholder="{{ 'password' | translate }}" nzSize="large"
-                    formControlName="password" />
-            </nz-form-control>
-        </nz-form-item>
-
-        <nz-form-item>
-            <nz-form-label>{{"confirmPassword" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <input nz-input type="password" placeholder="{{ 'confirmPassword' | translate }}" nzSize="large" formControlName="confirmPassword" />
-            </nz-form-control>
-        </nz-form-item>
-
-
-
-        
-        <nz-form-item>
-            <nz-form-label> {{"dateOfBirth" | translate}} </nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-                <nz-date-picker class="w-full" nzSize="large" nzPlaceHolder="{{'chooseDate' | translate}}" formControlName="birthDate" nzInputReadOnly="true"></nz-date-picker>
-            </nz-form-control>
-        </nz-form-item>
-
-        <nz-form-item>
-            <nz-form-label>{{"gender" | translate}}</nz-form-label>
-            <nz-form-control class="w-full" nzHasFeedback>
-              
-                <nz-select nzPlaceHolder="{{ 'gender' | translate }}" nzSize="large" class="w-full"
-                    formControlName="gender">
-                    <nz-option [nzLabel]="'FEMALE' | translate" [nzValue]="2"></nz-option>
-                    <nz-option [nzLabel]="'MALE' | translate" [nzValue]="1"></nz-option>
-                </nz-select>
-            </nz-form-control>
-        </nz-form-item>
-
-      
-        <button nz-button nzType="primary" class="w-full" nzSize="large">
-            {{"register" | translate}}
-        </button>
-    </form>
 </div>

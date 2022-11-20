@@ -1,5 +1,14 @@
 @import "settings/colors";
 
+button{
+    background-color: transparent;
+    border: none;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 .main-btn{
     background-color: $main-color;
     border-radius: 7px;
@@ -12,3 +21,4 @@
         cursor: pointer;
     }
 }
+

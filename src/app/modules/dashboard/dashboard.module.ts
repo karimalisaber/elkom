@@ -17,7 +17,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { QuestionDetailsComponent } from './routes/question-details/question-details.component';
 import { TeacherCardComponent } from './routes/teachers/teacher-card/teacher-card.component';
 import { TeacherDetailsComponent } from './routes/teacher-details/teacher-details.component';
-  
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { TeacherProfileComponent } from './routes/profile/teacher-profile/teacher-profile.component';
 import { StudentProfileComponent } from './routes/profile/student-profile/student-profile.component';
@@ -50,7 +51,8 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     NzIconModule,
     NzTagModule,
     NzInputModule,
-    NzDividerModule
+    NzDividerModule,
+    NzMenuModule
   ]
 })
 export class DashboardModule { }

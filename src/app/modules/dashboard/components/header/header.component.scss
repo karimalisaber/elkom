@@ -2,5 +2,11 @@
 	height: 50px;
 	font-size: 1rem;
 	border-radius: 1rem !important;
+}
+
+.wrapper{
     margin-bottom: 2rem;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
 }

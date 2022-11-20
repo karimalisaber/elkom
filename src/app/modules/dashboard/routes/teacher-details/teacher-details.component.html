@@ -1,1 +1,18 @@
-<p>teacher-details works!</p>
+<div class="main-container">
+    <div class="profile">
+
+    </div>
+
+    <div class="nav">
+        <section class="tabs-container">
+            <!-- [(nzChecked)] -->
+            <nz-tag (nzCheckedChange)="checkChange($event,1)" nzMode="checkable" class="tab tag-item gray">{{'overview' | translate}}</nz-tag>
+
+            <nz-tag (nzCheckedChange)="checkChange($event,1)" nzMode="checkable" class="tab tag-item gray">{{'certificates' | translate}}</nz-tag>
+
+            <nz-tag (nzCheckedChange)="checkChange($event,1)" nzMode="checkable" class="tab tag-item gray">{{'questions' | translate}}</nz-tag>
+
+        </section>
+
+    </div>
+</div>

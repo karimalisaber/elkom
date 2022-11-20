@@ -35,5 +35,9 @@
   "whichClass" : "Which Class?",
   "enterClass" : "enter class",
   "helpful" : "helpful",
-  "nothelpful" : "not helpful"
+  "nothelpful" : "not helpful",
+  "overview" : "overview",
+  "certificates": "certificates",
+  "teacherSignup" : "create a teacher account",
+  "teacherSignupDetails" : "create your account and start your best online education experience." 
 }

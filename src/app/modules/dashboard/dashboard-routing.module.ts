@@ -29,7 +29,7 @@ const routes: Routes = [
         path: 'teachers', component: TeachersComponent
       },
       {
-        path: 'teachers/teacher', component: TeacherDetailsComponent
+        path: 'teachers/:teacher', component: TeacherDetailsComponent
       },
       {
         path: 'profile', component: ProfileComponent

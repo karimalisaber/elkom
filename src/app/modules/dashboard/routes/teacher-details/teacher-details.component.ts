@@ -12,4 +12,7 @@ export class TeacherDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkChange(e: any, tags: any){
+
+  }
 }

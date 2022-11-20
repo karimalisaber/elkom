@@ -1,0 +1,35 @@
+@import "settings/colors";
+
+.tabs-container {
+
+	flex-grow: 1;
+	margin: 0 2rem;
+	position: relative;
+	height: 50px;
+	padding: 0 1em;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	border: 1px solid $main-color;
+	border-radius: 2rem;
+	
+	.tag-item {
+		padding: 5px 18px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.ant-tag, .ant-tag a, .ant-tag a:hover {
+		font-weight: bold;
+	}
+
+	.ant-tag-checkable-checked{
+		background: $main-color !important;
+		border-radius: 8rem;
+		color: #fff;
+		text-transform: capitalize;
+	}
+
+}

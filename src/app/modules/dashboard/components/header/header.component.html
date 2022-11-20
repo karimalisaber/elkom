@@ -1,4 +1,16 @@
-<nz-input-group>
-    <input class="search-input" nz-input [placeholder]="'search' | translate"
-        autofocus />
-</nz-input-group>
+<div class="wrapper">
+    <nz-input-group>
+        <input class="search-input" nz-input [placeholder]="'search' | translate" autofocus />
+    </nz-input-group>
+
+    <button>
+        <img src="assets/imgs/icons/notification.svg" alt="">
+
+      
+    </button>
+
+    <button routerLink="/auth/signup">
+        <img src="assets/imgs/icons/login-user.svg" alt="">
+
+    </button>
+</div>

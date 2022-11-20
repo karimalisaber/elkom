@@ -20,7 +20,7 @@ const importsExports = [
   NzUploadModule,
   NzModalModule,
   NzToolTipModule,
-  NgSelectModule
+  NgSelectModule,
 ]
 
 @NgModule({
