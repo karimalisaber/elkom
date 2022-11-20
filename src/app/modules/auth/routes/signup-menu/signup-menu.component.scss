@@ -1,5 +1,5 @@
 .container{
-    background-image: url('/assets/imgs/background.png');
+    background-image: url('/assets/imgs/auth/signup-background.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -9,8 +9,8 @@
 }
 
 .imgs-wrapper{
-    margin: auto;
-    gap: 2rem;
+    margin: 2rem auto;
+    gap: 5rem;
 }
 
 .footer{
@@ -18,4 +18,25 @@
     bottom: 1rem;
     right: 50%;
     transform: translateX(50%);
+}
+
+.user-type{
+    color: #00482D;
+    // font-weight: med;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-btn{
+    background-color: #65D9B8;
+    color: #00482D;
+    font-size: 2rem;
+    width: 340px;
+    padding: .5rem;
+    height: auto;
+    border-radius: 2rem;
 }

@@ -1,0 +1,22 @@
+@import "settings/colors";
+
+input::placeholder{
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.ant-input{
+    border-radius: .4rem !important;
+    border: 1px solid $main-color !important;
+}
+
+.ant-input:hover {
+    border-color: #40a9ff; // TODO
+    border-right-width: 1px;
+}
+
+.ng-select .ng-select-container  {
+    border-radius: .4rem !important;
+    border: 1px solid $main-color !important;
+
+}

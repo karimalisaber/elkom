@@ -7,6 +7,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 
 const importsExports = [
@@ -16,7 +18,9 @@ const importsExports = [
   ReactiveFormsModule,
   NzSelectModule,
   NzUploadModule,
-  NzModalModule
+  NzModalModule,
+  NzToolTipModule,
+  NgSelectModule
 ]
 
 @NgModule({

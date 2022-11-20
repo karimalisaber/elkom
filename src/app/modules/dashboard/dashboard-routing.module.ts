@@ -3,7 +3,6 @@ import { QuestionDetailsComponent } from './routes/question-details/question-det
 import { ProfileComponent } from './routes/profile/profile.component';
 import { TeachersComponent } from './routes/teachers/teachers.component';
 import { QuestionsComponent } from './routes/questions/questions.component';
-import { MainComponent } from './routes/main/main.component';
 import { ContainerComponent } from './components/container/container.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +12,7 @@ const routes: Routes = [
   {
     path: '', component: ContainerComponent, children: [
       {
-        path: '', component: MainComponent
+        path: '', redirectTo: 'questions', pathMatch: 'full'
       },
       {
         

@@ -1,0 +1,14 @@
+@import "settings/colors";
+
+.main-btn{
+    background-color: $main-color;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+
+    &:hover{
+        cursor: pointer;
+    }
+}

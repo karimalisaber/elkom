@@ -1,4 +1,50 @@
+@import "settings/colors";
 .text-center{
     text-align: center;
 }
 
+.main-text{
+    color: $main-text-color;
+}
+
+.second-text{
+    color: $main-color;
+}
+
+// .secon{
+//     color: $main-color;
+
+// }
+
+.small-decs{
+    font-size: .7rem;
+}
+
+.text-uppercase{
+    text-transform: uppercase;
+}
+
+
+.text-capitalize{
+    text-transform: capitalize;
+}
+
+
+.font-weight-medium{
+    font-weight: 650;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 1rem 0;
+}
+
+.description{
+    margin-bottom: .5rem;
+    // text-transform: ;
+    &::first-letter{
+        text-transform: capitalize;
+    }
+}

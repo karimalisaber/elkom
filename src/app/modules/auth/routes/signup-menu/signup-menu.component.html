@@ -3,7 +3,7 @@
         <img src="assets/imgs/logo.png" alt="logo">
     </div>
 
-    <h1>{{'userType' | translate}}</h1>
+    <h1 class="user-type">{{'userType' | translate}}</h1>
 
     <p>{{'_signup_desc1' | translate}}</p>
     <p>{{'_signup_desc2' | translate}}</p>
@@ -11,13 +11,13 @@
 
     <div class="d-flex flex-h-center imgs-wrapper">
         <div class="item">
-            <img class="d-block" src="assets/imgs/auth/student.png" alt="student">
-            <button routerLink="/auth/signup/student" nz-button nzType="default">{{'student' | translate}}</button>
+            <img width="300" height="270" class="d-block"  src="assets/imgs/auth/student.png" alt="student">
+            <button routerLink="/auth/signup/student" nz-button class="item-btn" nzType="default">{{'student' | translate}}</button>
         </div>
 
         <div class="item">
-            <img class="d-block" src="assets/imgs/auth/teacher.png" alt="teacher">
-            <button routerLink="/auth/signup/teacher" nz-button nzType="default">{{'teacher' | translate}}</button>
+            <img width="300" height="270" class="d-block" src="assets/imgs/auth/teacher.png" alt="teacher">
+            <button routerLink="/auth/signup/teacher" nz-button class="item-btn" nzType="default">{{'teacher' | translate}}</button>
         </div>
     </div>
 

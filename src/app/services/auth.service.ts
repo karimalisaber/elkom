@@ -1,5 +1,8 @@
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+type Role = 1 | 2
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +45,8 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
   }
- 
+
+  getRole(): Observable <Role>{
+    return of(1)
+  }
 }

@@ -1,0 +1,31 @@
+img{
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.main-wrapper{
+    background: url('/assets/imgs/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper{
+    text-align: center;
+    background: #fff;
+    border-radius: 1rem; 
+    padding: 2rem;
+    height: 80%;
+    width: 25%;
+}
+
+
+.user-type{
+    color: #00482D;
+    // font-weight: med;
+}
+

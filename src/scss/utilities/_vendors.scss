@@ -1,1 +1,8 @@
+@import "settings/colors" ;
 @import "../node_modules/ng-zorro-antd/ng-zorro-antd.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ant-divider{
+    border-top: 1px solid $main-color;
+   
+}

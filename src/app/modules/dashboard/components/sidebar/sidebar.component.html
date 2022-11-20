@@ -1,24 +1,20 @@
 <div class="container">
     <ul>
         <div class="logo">
-            <img class="d-block" src="assets/imgs/logo.png" alt="student">
-
-            <p class="text-center">{{'elkom' | translate}}</p>
+            <img width="120" height="110" class="d-block" src="assets/imgs/logo-en.png" alt="student">
         </div>
 
 
-        <li class="list-style-none">
-
-            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/">
-                {{'dashboard' | translate}}
-            </a>
-        </li>
+       
 
 
 
         <li class="list-style-none">
 
-            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/questions">
+            <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/questions">
+                <img src="assets/imgs/dashboard/questions-active.png" alt="">
+
                 {{'questions' | translate}}
             </a>
         </li>
@@ -26,7 +22,9 @@
 
         <li class="list-style-none">
 
-            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/myquestions">
+            <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/myquestions">
+                <img src="assets/imgs/dashboard/my-questons.png" alt="">
                 {{'myQuestions' | translate}}
             </a>
         </li>
@@ -34,7 +32,9 @@
 
         <li class="list-style-none">
 
-            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/teachers">
+            <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/teachers">
+                <img src="assets/imgs/dashboard/teachers.png" alt="">
                 {{'teachers' | translate}}
             </a>
         </li>
@@ -42,7 +42,9 @@
 
         <li class="list-style-none">
 
-            <a [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/profile">
+            <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/profile">
+                <img src="assets/imgs/dashboard/profile.png" alt="">
                 {{'profile' | translate}}
             </a>
         </li>

@@ -1,22 +1,51 @@
-<form autocomplete="off" (ngSubmit)="signIn()" [formGroup]="form">
-    <nz-form-item>
-        <nz-form-label>{{"email" | translate}}</nz-form-label>
-        <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
-            <input nz-input type="email" [placeholder]="'email' | translate" nzSize="large"
-                formControlName="email" />
-        </nz-form-control>
-    </nz-form-item>
+<div  class="d-flex main-wrapper">
 
-    <nz-form-item>
-        <nz-form-label>{{"password" | translate}}</nz-form-label>
-        <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
-            <input nz-input type="password" [placeholder]="'password' | translate" nzSize="large"
-                formControlName="password" />
-        </nz-form-control>
-    </nz-form-item>
+    <div  class="background-wrapper">
+        <!-- <div class="background-item"></div> -->
+        <img src="assets/imgs/auth/login-background.png"  alt="">
+    </div>
+
+    <div  class="form-wrapper">
+        <form  autocomplete="off" (ngSubmit)="signIn()" [formGroup]="form">
+            <div class="logo">
+                <img src="assets/imgs/logo.png" alt="logo">
+            </div>
+        
+            <h1 class="user-type">{{'userType' | translate}}</h1>
+        
+            <p>{{'_signup_desc1' | translate}}</p>
+            <p>{{'_signup_desc2' | translate}}</p>
 
 
-    <button [disabled]="form.invalid" class="btn main-button">
-        {{ "login" | translate }}
-    </button>
-</form>
+            
+            <div class="item">
+                <nz-form-label>{{"email" | translate}}</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+                        <input nz-input type="email" [placeholder]="'email' | translate" nzSize="large"
+                            formControlName="email" />
+                    </nz-form-control>
+                </nz-form-item>    
+            </div>
+           
+            <div class="item">
+                <nz-form-label>{{"password" | translate}}</nz-form-label>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+                        <input nz-input type="password" [placeholder]="'password' | translate" nzSize="large"
+                            formControlName="password" />
+                    </nz-form-control>
+                </nz-form-item>
+            
+            </div>
+
+        
+            <button [disabled]="form.invalid" class="btn main-btn w-100">
+                {{ "signin" | translate }}
+            </button>
+        </form>
+    </div>
+
+ 
+</div>

@@ -2,7 +2,6 @@ import { SharedModule } from './../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainComponent } from './routes/main/main.component';
 import { QuestionsComponent } from './routes/questions/questions.component';
 import { TeachersComponent } from './routes/teachers/teachers.component';
 import { ProfileComponent } from './routes/profile/profile.component';
@@ -27,7 +26,6 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
 
 @NgModule({
   declarations: [
-    MainComponent,
     QuestionsComponent,
     TeachersComponent,
     ProfileComponent,

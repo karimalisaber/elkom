@@ -2,7 +2,6 @@ $sidebar-width: 250px;
 
 .container{
     display: flex;
-    height: 100%;
 
     .sidebar-wrapper{
         width: $sidebar-width;
@@ -21,6 +20,12 @@ $sidebar-width: 250px;
     .content{
         width: calc(100% - $sidebar-width);
         padding: 2rem;
+        background: url("/assets/imgs/dashboard/content-background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        
     }
 }
+
+
 

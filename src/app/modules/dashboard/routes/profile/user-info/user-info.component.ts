@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-
-  constructor() { }
+  form = this.fb.group({
+    email: [],
+    fullName: [],
+    dateOfBirth: [],
+    mobileNumber: []
+  })
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

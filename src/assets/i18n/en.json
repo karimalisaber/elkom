@@ -29,5 +29,11 @@
   "questionDetails" : "question details",
   "ask" : "ask",
   "cancel" : "cancel",
-  "addImg" : "add image"
+  "addImg" : "add image",
+  "myProfile" : "my profile",
+  "studentInfo" : "Student Information",
+  "whichClass" : "Which Class?",
+  "enterClass" : "enter class",
+  "helpful" : "helpful",
+  "nothelpful" : "not helpful"
 }

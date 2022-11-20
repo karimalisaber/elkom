@@ -1,0 +1,21 @@
+.ask-question-wrapper{
+    position: sticky;
+    bottom: 0px;
+    
+    .layout{
+        padding: 1rem;
+    }
+
+    .bottom{
+        background-color: #fff;
+        height: 30px;
+        width: 100%;
+        margin-bottom: -20px;
+        
+    }
+
+    // width: calc(100% - 300px);
+    button{
+        border-radius: 2rem;
+    }
+}
