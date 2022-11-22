@@ -1,0 +1,40 @@
+@import "settings/colors";
+
+.plus-icon {
+    font-size: 2rem;
+    color: $main-color;
+}
+
+.img-wrapper {
+    margin: 1rem 0;
+}
+
+.wrapper {
+    margin-bottom: 1rem;
+}
+
+label {
+    padding: 1rem;
+    font-size: 1rem !important; 
+    color: $main-text-color !important;
+    font-weight: normal;
+}
+
+.form-wrapper {
+    border: 0;
+    border-radius: 0;
+    background-color: #E2FFF7;
+    min-height: 70px;
+    background-color: #E2FFF7;
+
+    input, textarea {
+        border: 0 !important;
+        background-color: #E2FFF7;
+
+
+    }
+
+    &::after {
+        border-bottom: thin solid #3FE2A5 !important
+    }
+}

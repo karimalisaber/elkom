@@ -3,10 +3,10 @@
     <form nz-form [formGroup]="form" nzLayout="vertical">
 
         <!-- Level -->
-        <div>
-            <label>{{'level' | translate}}</label>
-                <ng-select *ngIf="levels$ | async as levels" formControlName="levelId"
+        <div class="wrapper">
+                <ng-select placeholder="{{'level' | translate}}" *ngIf="levels$ | async as levels" formControlName="levelId"
                     (ngModelChange)="onLevelChange($event)">
+                    <label for="">karim</label>
                     <ng-option *ngFor="let option of levels" >
                         {{option.title}}
                     </ng-option>
@@ -15,9 +15,8 @@
 
         <!-- Subject -->
 
-        <div>
-            <label>{{'subject' | translate}}</label>
-                <ng-select *ngIf="subjects$ | async as subjects" formControlName="subjectId"
+        <div class="wrapper">
+                <ng-select placeholder="{{'subject' | translate}}" *ngIf="subjects$ | async as subjects" formControlName="subjectId"
                     (ngModelChange)="onSubjectChange($event)">
                     <ng-option *ngFor="let option of subjects" >
                         {{option.title}}
@@ -27,10 +26,8 @@
 
 
         <!-- Lecture -->
-        <div>
-            <label>{{'lecture' | translate}}</label>
-            <ng-select *ngIf="lectures$ | async as lectures" formControlName="subjectId"
-               >
+        <div class="wrapper">
+            <ng-select placeholder="{{'lecture' | translate}}" *ngIf="lectures$ | async as lectures" formControlName="subjectId">
                 <ng-option *ngFor="let option of lectures" >
                     {{option.title}}
                 </ng-option>
@@ -39,7 +36,7 @@
         </div>
 
         <!-- Question Text -->
-        <div>
+        <div class="form-wrapper wrapper">
             <label>{{"questionText" | translate}}</label>
             <nz-form-control >
                 <input nz-input type="text" [placeholder]="'QUESTION_TEXT' | translate" nzSize="large"
@@ -49,7 +46,7 @@
 
 
         <!-- Question Description -->
-        <div>
+        <div class="wrapper form-wrapper">
             <label>{{"description" | translate}}</label>
             <nz-form-control>
                 <textarea rows="4" formControlName="description" nz-input
@@ -58,17 +55,17 @@
         </div>
 
 
-            <div class="">
+            <div class="img-wrapper">
                 <ng-container>
                     <div class="clearfix">
                         <nz-upload nzListType="picture-card" [(nzFileList)]="fileList"
                             [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview" nzName="file"
                             [nzMultiple]="true" (nzChange)="onUploadChange($event)">
-                            <div>
-                                <span nz-icon nzType="plus" nzTheme="outline"></span>
-                                <div style="margin-top: 8px">{{'addImg' | translate}}</div>
-                            </div>
+                                <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline" ></span>
+
                         </nz-upload>
+                        <span class="text-capitalize">{{'addImg' | translate}}</span>
+
 
                         <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
                             (nzOnCancel)="previewVisible = false">

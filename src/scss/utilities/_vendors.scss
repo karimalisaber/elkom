@@ -1,6 +1,7 @@
 @import "settings/colors" ;
 @import "../node_modules/ng-zorro-antd/ng-zorro-antd.css";
-@import "~@ng-select/ng-select/themes/default.theme.css";
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
 
 .ant-divider{
     border-top: 1px solid $main-color;
@@ -15,6 +16,64 @@
     }
 }
 
+.ant-upload.ant-upload-select-picture-card > .ant-upload{
+    background-color: transparent;
+}
+
+.ant-upload.ant-upload-select-picture-card{
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid $main-color;
+    width: 70px;
+    height: 70px;
+}
+
+.ant-upload.ant-upload-select-picture-card:hover{
+    background-color: $main-color;
+    border: 1px solid $main-color;
+
+    *{
+        color: #fff;
+    }
+}
+
 // .ant-modal-footer{
 //     text-align: left;
 // }
+
+.ng-select .ng-select-container{
+    border: 0;
+    border-radius: 0;
+    background-color: #E2FFF7;
+    min-height: 70px;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-input>input{
+    padding: 1rem !important;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container{
+    padding: 1rem;
+    .ng-placeholder{
+        font-size: 1.3rem;
+        font-weight: normal;
+        color: $main-text-color;
+    }
+
+}
+
+.ng-select .ng-select-container:after{
+    border-bottom: thin solid #3FE2A5 !important
+}
+
+.ng-dropdown-panel-items{
+    background-color:  #F2FFFB;
+    padding: 0 1rem;
+
+    .ng-option{
+        border-bottom: 1px solid #f2f2f2;
+        background-color: transparent !important;
+        color: $main-text-color !important;
+
+    }
+}
