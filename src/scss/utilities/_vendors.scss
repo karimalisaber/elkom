@@ -6,3 +6,15 @@
     border-top: 1px solid $main-color;
    
 }
+
+.ant-modal-header{
+    background-color: $light-background;
+
+    .ant-modal-title{
+        text-transform: capitalize;
+    }
+}
+
+// .ant-modal-footer{
+//     text-align: left;
+// }

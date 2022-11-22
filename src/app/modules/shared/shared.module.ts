@@ -9,6 +9,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 const importsExports = [
@@ -21,6 +22,8 @@ const importsExports = [
   NzModalModule,
   NzToolTipModule,
   NgSelectModule,
+  NzIconModule,
+  
 ]
 
 @NgModule({
@@ -31,6 +34,8 @@ const importsExports = [
   ],
   exports: [
     ...importsExports
+  ],
+  providers:[
   ]
 })
 export class SharedModule { }

@@ -14,7 +14,8 @@ export class LookupService {
     }
 
     fetchSubjects(level_id: string){
-        return of()
+        return of([{id: '1', title: 'test'}])
+
 
     }
 

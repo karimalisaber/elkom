@@ -24,7 +24,7 @@ export class QuestionsComponent implements OnInit {
       nzTitle: this.translateService.instant("questionDetails"),
       nzContent: AskQuestionComponent, 
       nzWidth: '80%',
-      nzOkText: this.translateService.instant("ask"),
+      nzOkText: this.translateService.instant("submit"),
       nzOkDisabled:  true,
       nzCancelText: this.translateService.instant("cancel"),
       nzClosable: false,
