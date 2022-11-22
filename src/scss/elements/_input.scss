@@ -15,13 +15,7 @@ input::placeholder{
     border-right-width: 1px;
 }
 
-input:active, input:hover, input:focus,
-textarea:active, textarea:hover, textarea:focus
-{
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-}
+
 
 .ng-select .ng-select-container  {
     // border-radius: .4rem !important;

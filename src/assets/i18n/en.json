@@ -39,11 +39,14 @@
   "overview" : "overview",
   "certificates": "certificates",
   "teacherSignup" : "create a teacher account",
+  "studentSignup" : "create a Student account",
   "teacherSignupDetails" : "create your account and start your best online education experience.",
+  "studentSignupDetails" : "create your account and start your best online education experience.",
   "level" : "level",
   "subject" : "subject",
   "lecture" : "lecture",
   "questionText" : "question text",
   "description" : "description",
-  "submit" : "submit"
+  "submit" : "submit",
+  "edit" : "edit"
 }

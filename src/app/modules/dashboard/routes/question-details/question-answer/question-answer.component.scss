@@ -1,0 +1,56 @@
+.main-wrapper {
+    margin-bottom: 2rem;
+    border-radius: .5rem;
+    background-color: #fff;
+
+    .header {
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        color: #fff;
+        padding: 1rem;
+
+        h4 {
+            color: #fff;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.content {
+    padding: 1rem;
+}
+
+
+.date-wrapper {
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.date {
+    border-radius: .2rem;
+    padding: .1rem .2rem;
+    font-size: .9rem;
+}
+
+
+.footer {
+    display: flex;
+    gap: .7rem;
+
+    .item {
+        font-size: .7rem;
+
+        &.vote {
+            border-radius: 14px;
+            padding: .1rem .7rem;
+        }
+    }
+}
+
+.details {
+    font-size: 1.1rem;
+    color: #1053C8;
+    margin-bottom: .5rem;
+}
+

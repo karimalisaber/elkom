@@ -38,3 +38,54 @@ label {
         border-bottom: thin solid #3FE2A5 !important
     }
 }
+
+
+
+
+:host ::ng-deep{
+    input:active, input:hover, input:focus,
+    textarea:active, textarea:hover, textarea:focus
+    {
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .ng-select .ng-select-container {
+        border: 0;
+        border-radius: 0;
+        background-color: #E2FFF7;
+        min-height: 70px;
+    }
+
+    .ng-select .ng-select-container .ng-value-container .ng-input>input {
+        padding: 1rem !important;
+    }
+
+    .ng-select.ng-select-single .ng-select-container .ng-value-container {
+        padding: 1rem;
+
+        .ng-placeholder {
+            font-size: 1.3rem;
+            font-weight: normal;
+            color: $main-text-color;
+        }
+
+    }
+
+    .ng-select .ng-select-container:after {
+        border-bottom: thin solid #3FE2A5 !important
+    }
+
+    .ng-dropdown-panel-items {
+        background-color: #F2FFFB;
+        padding: 0 1rem;
+
+        .ng-option {
+            border-bottom: 1px solid #f2f2f2;
+            background-color: transparent !important;
+            color: $main-text-color !important;
+
+        }
+    }
+}

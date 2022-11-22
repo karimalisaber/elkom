@@ -24,6 +24,7 @@ import { TeacherProfileComponent } from './routes/profile/teacher-profile/teache
 import { StudentProfileComponent } from './routes/profile/student-profile/student-profile.component';
 import { UserInfoComponent } from './routes/profile/user-info/user-info.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
+import { QuestionAnswerComponent } from './routes/question-details/question-answer/question-answer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     TeacherProfileComponent,
     StudentProfileComponent,
     UserInfoComponent,
-    AskQuestionComponent
+    AskQuestionComponent,
+    QuestionAnswerComponent
   ],
   imports: [
     CommonModule,

@@ -1,26 +1,26 @@
-@import "settings/colors" ;
+@import "settings/colors";
 @import "../node_modules/ng-zorro-antd/ng-zorro-antd.css";
 // @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~@ng-select/ng-select/themes/material.theme.css";
 
-.ant-divider{
+.ant-divider {
     border-top: 1px solid $main-color;
-   
+
 }
 
-.ant-modal-header{
+.ant-modal-header {
     background-color: $light-background;
 
-    .ant-modal-title{
+    .ant-modal-title {
         text-transform: capitalize;
     }
 }
 
-.ant-upload.ant-upload-select-picture-card > .ant-upload{
+.ant-upload.ant-upload-select-picture-card>.ant-upload {
     background-color: transparent;
 }
 
-.ant-upload.ant-upload-select-picture-card{
+.ant-upload.ant-upload-select-picture-card {
     background-color: transparent;
     border-radius: 50%;
     border: 1px solid $main-color;
@@ -28,11 +28,11 @@
     height: 70px;
 }
 
-.ant-upload.ant-upload-select-picture-card:hover{
+.ant-upload.ant-upload-select-picture-card:hover {
     background-color: $main-color;
     border: 1px solid $main-color;
 
-    *{
+    * {
         color: #fff;
     }
 }
@@ -41,39 +41,24 @@
 //     text-align: left;
 // }
 
-.ng-select .ng-select-container{
-    border: 0;
-    border-radius: 0;
-    background-color: #E2FFF7;
-    min-height: 70px;
-}
 
-.ng-select .ng-select-container .ng-value-container .ng-input>input{
-    padding: 1rem !important;
-}
-
-.ng-select.ng-select-single .ng-select-container .ng-value-container{
-    padding: 1rem;
-    .ng-placeholder{
-        font-size: 1.3rem;
-        font-weight: normal;
-        color: $main-text-color;
-    }
+.ant-picker {
+    width: 100%;
+    border-radius: 6px !important;
+    border: 1px solid $main-color !important;
 
 }
 
-.ng-select .ng-select-container:after{
-    border-bottom: thin solid #3FE2A5 !important
+.ant-select-selector 
+{
+    border: 0 !important;
+    border-radius: 6px !important;
 }
 
-.ng-dropdown-panel-items{
-    background-color:  #F2FFFB;
-    padding: 0 1rem;
+.ant-select,
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector
+{
+    border-radius: 6px !important;
+    border: 1px solid $main-color !important;
 
-    .ng-option{
-        border-bottom: 1px solid #f2f2f2;
-        background-color: transparent !important;
-        color: $main-text-color !important;
-
-    }
 }

@@ -1,3 +1,4 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -34,7 +35,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     ReactiveFormsModule,
     NzSelectModule,
     TranslateModule.forChild(),
-    NzButtonModule
+    NzButtonModule,
+    NgSelectModule
   ]
 })
 export class AuthModule { }

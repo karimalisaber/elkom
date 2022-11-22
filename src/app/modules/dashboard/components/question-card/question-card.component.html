@@ -1,7 +1,7 @@
-<!-- routerLink="/dashboard/questions/details" -->
+<!--  -->
 <div  class="main-wrapper main-container">
     <div class="header d-flex justify-between align-center">
-        <h1>
+        <h1 routerLink="/dashboard/questions/details">
             Card Title
         </h1>
 
@@ -26,11 +26,24 @@
             Karim
         </div>
 
-        <div class="item share">
+        <!-- <div class="item share">
                 <img width="20" height="20" src="assets/imgs/icons/share.svg" alt="">
 
             Share
+        </div> -->
+
+        <div style="display: flex; gap: 5px" >
+            <div class=" main-border edit-wrapper circle">
+               <span nz-icon nzType="edit" nzTheme="outline"></span>
+            </div>
+            {{'edit' | translate}}
         </div>
+
+        <div nz-tooltip  class="item answer main-border success">
+            2 answers
+        </div>
+
+
 
         <div nz-tooltip [nzTooltipTitle]="'helpful' | translate" class="item vote main-border success">
             <img src="assets/imgs/icons/right.svg" alt="">
