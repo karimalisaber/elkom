@@ -1,3 +1,6 @@
+import { EffectsModule } from '@ngrx/effects';
+import { SessionEffects } from './../../store/session/session.effects';
+import { StoreModule } from '@ngrx/store';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -36,7 +39,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzSelectModule,
     TranslateModule.forChild(),
     NzButtonModule,
-    NgSelectModule
+    NgSelectModule,
+    EffectsModule.forFeature([
+      SessionEffects
+    ])
+  
   ]
 })
 export class AuthModule { }

@@ -1,3 +1,4 @@
+import { ToastrService } from './services/toastr.service';
 import { LocalizationService } from './services/localization.service';
 import { Component } from '@angular/core';
 
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private localization: LocalizationService){
-    this.localization.setLanguage('en')
+  constructor(
+    private localization: LocalizationService,
+    private toastr: ToastrService
+    ){
+    this.localization.setLanguage('en');
+    this.toastr.init()
   }
 }

@@ -1,5 +1,8 @@
+import { login, loginSuccess } from './../../../../store/session/session.actions';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/store/session/session.model';
 
 @Component({
   selector: 'app-signin',
@@ -12,12 +15,21 @@ export class SigninComponent implements OnInit {
     password: ['', [Validators.required]],
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private store : Store<any>
+    ) { }
 
   ngOnInit(): void {
+
   }
 
   signIn(){
+    const user = this.form.value as User; 
+
+    this.store.dispatch(login({user}))
+    
+    this.store.dispatch(loginSuccess({session:{}}))
 
   }
 
