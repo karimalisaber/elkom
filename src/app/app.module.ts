@@ -12,7 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromRoot from 'src/app/store/root.store'
 import { EffectsModule } from '@ngrx/effects';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-
+import * as fromLookups from './store/lookups'
 export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -38,7 +38,12 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
     }),
 
     StoreModule.forRoot(fromRoot.reducers),
-    EffectsModule.forRoot()
+    StoreModule.forFeature(fromLookups.featureKey, fromLookups.reducers, {}),
+
+    EffectsModule.forRoot(),
+    EffectsModule.forFeature([
+      ...fromLookups.effects
+    ])
   ],
   providers: [
 

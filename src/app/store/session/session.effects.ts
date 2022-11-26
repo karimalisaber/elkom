@@ -6,7 +6,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
 import * as actions from './session.actions';
 
-const url = environment.baserUrl
+const BaseUrl = environment.baserUrl
 
 @Injectable()
 export class SessionEffects {
@@ -25,6 +25,8 @@ export class SessionEffects {
     );
 
     login(user: any): Observable<any> {
+        const url = BaseUrl + '/authentications/SignIn'
+        debugger
         return this.http.post(url, user)
     }
 

@@ -10,7 +10,7 @@ export interface State {
     error: any
 }
 
-export const initialState: State = {
+const initialState: State = {
     session: {
         isAuthenticated: false,
         user: []

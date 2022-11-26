@@ -11,7 +11,7 @@ import { User } from 'src/app/store/session/session.model';
 })
 export class SigninComponent implements OnInit {
   form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   })
 
@@ -29,7 +29,6 @@ export class SigninComponent implements OnInit {
 
     this.store.dispatch(login({user}))
     
-    this.store.dispatch(loginSuccess({session:{}}))
 
   }
 
