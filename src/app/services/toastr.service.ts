@@ -1,16 +1,20 @@
-import { loginFailure } from './../store/session/session.actions';
+import { loginFailure, teacherSignupSuccess, studentSignupSuccess, teacherSignupFailure, studentSignupFailure } from './../store/session/session.actions';
 import { Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { loginSuccess } from '../store/session/session.actions';
 
 const SuccessSubjects$ =[
-  loginSuccess
+  loginSuccess,
+  teacherSignupSuccess,
+  studentSignupSuccess
 ]
 
 
 const ErrorSubjects$ =[
-  loginFailure
+  loginFailure,
+  teacherSignupFailure,
+  studentSignupFailure
 ]
 
 @Injectable({

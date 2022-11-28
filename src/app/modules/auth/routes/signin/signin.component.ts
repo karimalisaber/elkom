@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { take } from 'rxjs';
+import { Actions, ofType } from '@ngrx/effects';
 import { login, loginSuccess } from './../../../../store/session/session.actions';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +14,15 @@ import { User } from 'src/app/store/session/session.model';
 })
 export class SigninComponent implements OnInit {
   form = this.fb.group({
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    username: ['karim@gmail.com', [Validators.required]],
+    password: ['1234', [Validators.required]],
   })
 
   constructor(
     private fb: FormBuilder,
-    private store : Store<any>
+    private store : Store<any>,
+    private actions: Actions,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -29,6 +34,10 @@ export class SigninComponent implements OnInit {
 
     this.store.dispatch(login({user}))
     
+    this.actions.pipe(ofType(loginSuccess), take(1))
+      .subscribe(res=>{
+        this.router.navigate([''])
+      })
 
   }
 

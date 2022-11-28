@@ -13,6 +13,7 @@ import * as fromRoot from 'src/app/store/root.store'
 import { EffectsModule } from '@ngrx/effects';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import * as fromLookups from './store/lookups'
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
     ])
   ],
   providers: [
+    { provide: NZ_I18N, useValue: en_US },
 
   ],
   bootstrap: [AppComponent]

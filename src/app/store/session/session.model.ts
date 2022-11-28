@@ -1,12 +1,15 @@
 export interface Session {
-}
+    user: User | null,
+    authorityToken: string | null
+}   
 
 export interface User{
-    password: string,
-    username: string,
-    fullName: string,
-    email: string,
-    phoneNumber: string,
-    birthDate: string,
-    gender: number
+    password?: string,
+    username?: string,
+    fullName?: string,
+    email?: string,
+    phoneNumber?: string,
+    birthDate?: string,
+    gender?: number,
+    gradeId?: string
 }

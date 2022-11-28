@@ -1,8 +1,9 @@
+import { CustomResponse } from './../store.interface';
 import { User } from './session.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
 import * as actions from './session.actions';
@@ -32,7 +33,7 @@ export class SessionEffects {
             mergeMap(({ user }) => this.addTeacher(user)
                 .pipe(
                     map(
-                        (res: any) => actions.teacherSignupSuccess({ user: res })),
+                        (res: any) => actions.teacherSignupSuccess({ session: res })),
                     catchError((error) => of(actions.teacherSignupFailure({ error })))
                 ),
             )
@@ -46,7 +47,7 @@ export class SessionEffects {
             mergeMap(({ user }) => this.addStudent(user)
                 .pipe(
                     map(
-                        (res: any) => actions.studentSignupSuccess({ user: res })),
+                        (res: any) => actions.studentSignupSuccess({ session: res })),
                     catchError((error) => of(actions.studentSignupFailure({ error })))
                 ),
             )
@@ -56,7 +57,15 @@ export class SessionEffects {
     addTeacher(user: User) {
         const url = BaseUrl + '/users/teachers/add'
 
-        return this.http.post(url, user)
+        return this.http.post(url, user).pipe(
+          switchMap((res: any)=> {
+            if(res.succeeded){
+                return this.login(user)
+            }else{
+                throw(res)
+            }
+          })
+        )
     }
 
     

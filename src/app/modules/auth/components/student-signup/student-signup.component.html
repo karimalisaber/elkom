@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-    <div class="main-container">
+    <form preventDefault (ngSubmit) = "signup()" class="main-container">  
         <img width="120" height="110" class="d-block m-auto" src="assets/imgs/logo.png" alt="student">
 
         <div class="arrow">
@@ -27,7 +27,7 @@
                 <nz-form-item>
                     <label>{{"whichClass" | translate}}</label>
 
-                    <nz-select nzShowSearch nzAllowClear [nzPlaceHolder]="'whichClass' | translate" >
+                    <nz-select  formControlName="gradeId" nzShowSearch nzAllowClear [nzPlaceHolder]="'whichClass' | translate" >
                         <nz-option *ngFor="let grade of grades$ | async" [nzLabel]="grade.title" [nzValue]="grade.id"></nz-option>
                       </nz-select>
                 </nz-form-item>
@@ -50,7 +50,7 @@
                     <label>{{"mobileNumber" | translate}}</label>
                     <nz-form-control class="w-full" nzHasFeedback>
                         <input nz-input type="text" placeholder="{{ 'mobileNumber' | translate }}" nzSize="large"
-                            formControlName="mobileNumber" />
+                            formControlName="phoneNumber" />
                     </nz-form-control>
                 </nz-form-item>
 
@@ -95,8 +95,8 @@
 
                         <nz-select nzPlaceHolder="{{ 'gender' | translate }}" nzSize="large" class="w-full"
                             formControlName="gender">
-                            <nz-option [nzLabel]="'FEMALE' | translate" [nzValue]="2"></nz-option>
                             <nz-option [nzLabel]="'MALE' | translate" [nzValue]="1"></nz-option>
+                            <nz-option [nzLabel]="'FEMALE' | translate" [nzValue]="2"></nz-option>
                         </nz-select>
                     </nz-form-control>
                 </nz-form-item>
@@ -105,9 +105,9 @@
 
         <div class="btn-wrapper w-100">
 
-            <button nz-button nzType="primary" class="d-block text-center m-auto main-btn register-btn" nzSize="large">
+            <button type="submit" nz-button nzType="primary" class="d-block text-center m-auto main-btn register-btn" nzSize="large">
                 {{"register" | translate}}
             </button>
         </div>
-    </div>
+    </form>
 </div>

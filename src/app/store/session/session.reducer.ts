@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
+import * as actions from './session.actions';
 import { Session } from './session.model';
-import * as actions from './session.actions'
 export const featureKey = 'session';
 
 export interface State {
@@ -12,8 +12,8 @@ export interface State {
 
 const initialState: State = {
     session: {
-        isAuthenticated: false,
-        user: []
+        user: null,
+        authorityToken: null
     },
     loading: false,
     loaded: false,
@@ -22,14 +22,16 @@ const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
-    on(actions.loadSession, (state) => ({ ...state, loading: true })),
-    on(actions.loadSessionSuccess, (state, { session }) => {
+    on(actions.login, (state) => ({ ...state, loading: true })),
+    on(actions.loginSuccess, (state, { session }) => {
+        return { ...state, session: session, loading: false, loaded: true }
+    }),
+    on(actions.studentSignupSuccess, (state, { session }) => {
         return { ...state, session, loading: false, loaded: true }
     }),
-    on(actions.loadSessionFailure, (state, { error }) => ({ ...state, error, loading: false })),
-    on(actions.deleteSession, (state) => ({ ...state, loading: true })),
-    on(actions.deleteSessionSuccess, () => ({ ...initialState })),
-    on(actions.deleteSessionFailure, (state, { error }) => ({ ...state, error, loading: false })),
+    on(actions.teacherSignupSuccess, (state, { session }) => {
+        return { ...state, session, loading: false, loaded: true }
+    }),
 );
 
 export const getSession = (state: State) => state;

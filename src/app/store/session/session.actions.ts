@@ -28,7 +28,7 @@ export const teacherSignup = createAction(
 
 export const teacherSignupSuccess = createAction(
     '[Root/Session] teacher signup Success',
-    props<{ user: User }>()
+    props<{ session: Session }>()
 );
 
 export const teacherSignupFailure = createAction(
@@ -45,7 +45,7 @@ export const studentSignup = createAction(
 
 export const studentSignupSuccess = createAction(
     '[Root/Session] student signup Success',
-    props<{ user: User }>()
+    props<{ session: Session }>()
 );
 
 export const studentSignupFailure = createAction(

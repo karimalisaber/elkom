@@ -11,7 +11,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SigninComponent } from './routes/signin/signin.component';
 import { SignupComponent } from './routes/signup/signup.component';
 import { SignupMenuComponent } from './routes/signup-menu/signup-menu.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
@@ -32,6 +32,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CommonModule,
     AuthRoutingModule,
     NzFormModule,
+    FormsModule,
     NzTypographyModule,
     NzInputModule,
     NzDatePickerModule,
