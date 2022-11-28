@@ -1,10 +1,5 @@
-export interface Grade {
-    id: string;
-    title: string;
-    description: string;
-    program: {
-        id: string;
-        title: string;
-        description: string;
-    }
+import { Lookup } from "../modal";
+
+export interface Grade extends Lookup{
+    program: Lookup
 }

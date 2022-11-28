@@ -1,5 +1,5 @@
-export interface Specialty{
-    id:string;
-    title: string;
-    description: string;
+import { Lookup } from "../modal";
+
+export interface Specialty extends Lookup{
+
 }

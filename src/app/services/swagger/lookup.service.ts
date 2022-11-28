@@ -23,5 +23,4 @@ export class LookupService {
         return of([{id: '1', title: 'test'}])
 
     }
-
 }
