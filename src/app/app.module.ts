@@ -8,7 +8,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import * as fromRoot from 'src/app/store/root.store'
 import { EffectsModule } from '@ngrx/effects';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
@@ -52,4 +52,6 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

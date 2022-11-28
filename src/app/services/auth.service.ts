@@ -1,3 +1,4 @@
+import { User } from './../store/session/session.model';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -9,7 +10,7 @@ type Role = 1 | 2
 })
 export class AuthService {
 
-  isLogedIn(): boolean{
+  isLogedin(): boolean{
     const helper = new JwtHelperService();
     const token = localStorage.getItem('token');
 
@@ -25,24 +26,40 @@ export class AuthService {
 
   }
 
-  setCurrentUserName(name: string){
-    localStorage.setItem('userName', name);
-  }
-
-
   getToken(){
     const token =  localStorage.getItem('token') ;
     // if(!user) return false;
     return token;
   }
 
+
   setToken(token: string){
     localStorage.setItem('token', token);
+  }
+
+  setUser(user: User){
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUser(): User | null{
+    const user =  localStorage.getItem('user') ;
+    if(!user) return null;
+    return JSON.parse(user);
+  }
+
+  setRefreshToken(token: string){
+    localStorage.setItem('refreshToken', token);
+  }
+  getRefreshToken(){
+    const token =  localStorage.getItem('refreshToken') ;
+    // if(!user) return false;
+    return token;
   }
 
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('userName');
   }
 

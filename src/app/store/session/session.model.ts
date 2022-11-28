@@ -1,6 +1,8 @@
 export interface Session {
     user: User | null,
-    authorityToken: string | null
+    authorityToken?: string | null,
+    token: string | null,
+    refreshToken: string | null
 }   
 
 export interface User{

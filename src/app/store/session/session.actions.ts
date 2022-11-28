@@ -1,3 +1,4 @@
+import { CustomResponse } from './../store.interface';
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Session, User } from './session.model';
@@ -11,7 +12,7 @@ export const login = createAction(
 
 export const loginSuccess = createAction(
     '[Root/Session] login Success',
-    props<{ session: Session }>()
+    props<{ data: CustomResponse<User>}>()
 );
 
 export const loginFailure = createAction(
@@ -53,26 +54,6 @@ export const studentSignupFailure = createAction(
     props<{ error: any }>()
 );
 
-
-
-
-
-
-
-
-export const loadSession = createAction(
-    '[Root/Session] Load Session'
-);
-
-export const loadSessionSuccess = createAction(
-    '[Root/Session] Load Session Success',
-    props<{ session: Session }>()
-);
-
-export const loadSessionFailure = createAction(
-    '[Root/Session] Load Session Failure',
-    props<{ error: any }>()
-);
 
 export const SessionExpired = createAction(
     '[Root/Session] Session Expired'
