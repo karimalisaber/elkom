@@ -1,6 +1,9 @@
+import { Store, select } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserRoleEnum } from 'src/app/models/user';
+import { loadGrades } from 'src/app/store/lookups/grades/actions';
+import { SelectLookup } from 'src/app/store/lookups';
 
 @Component({
   selector: 'auth-student-signup',
@@ -8,6 +11,8 @@ import { UserRoleEnum } from 'src/app/models/user';
   styleUrls: ['./student-signup.component.scss']
 })
 export class StudentSignupComponent implements OnInit {
+  grades$ = this.store.pipe(select(SelectLookup().grades.all))
+  
   form = this.fb.group({
     fullName: ['', [Validators.required]],
     class: ['', [Validators.required]],
@@ -21,9 +26,17 @@ export class StudentSignupComponent implements OnInit {
     confirmationBaseUrl: []
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store<any>) { }
 
   ngOnInit(): void {
+    this.dispatcher()
+    this.grades$.subscribe(Res=>{
+      console.log(Res,'koko')
+    })
+  }
+
+  dispatcher() {
+    this.store.dispatch(loadGrades())
   }
 
   signup() {

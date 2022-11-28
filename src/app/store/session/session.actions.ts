@@ -21,6 +21,40 @@ export const loginFailure = createAction(
 
 
 
+export const teacherSignup = createAction(
+    '[Root/Session] teacher signup',
+    props<{user: User}>()
+);
+
+export const teacherSignupSuccess = createAction(
+    '[Root/Session] teacher signup Success',
+    props<{ user: User }>()
+);
+
+export const teacherSignupFailure = createAction(
+    '[Root/Session] teacher signup Failure',
+    props<{ error: any }>()
+);
+
+
+
+export const studentSignup = createAction(
+    '[Root/Session] student signup',
+    props<{user: User}>()
+);
+
+export const studentSignupSuccess = createAction(
+    '[Root/Session] student signup Success',
+    props<{ user: User }>()
+);
+
+export const studentSignupFailure = createAction(
+    '[Root/Session] teacher signup Failure',
+    props<{ error: any }>()
+);
+
+
+
 
 
 

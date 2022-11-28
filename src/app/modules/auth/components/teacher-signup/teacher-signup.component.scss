@@ -3,7 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     // padding: 10% 20%;
-    // height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     .main-container{
@@ -11,9 +11,10 @@
         width: 60%;
     }
 }
-.arrow{
-    background-color: blue;
-}
+
+// .arrow{
+//     background-color: blue;
+// }
 
 .register-btn{
     padding: 0 8rem;

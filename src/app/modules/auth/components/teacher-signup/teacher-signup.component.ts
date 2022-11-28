@@ -1,6 +1,5 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { UserRoleEnum } from 'src/app/models/user';
 
 @Component({
   selector: 'auth-teacher-signup',
@@ -14,7 +13,6 @@ export class TeacherSignupComponent implements OnInit {
     mobileNumber: ['', [Validators.required, Validators.pattern(/^[+()\d-]+$/)]],
     birthDate: [null, [Validators.required]],
     gender: [null, Validators.required],
-    role: UserRoleEnum.Teacher,
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]],
     confirmationBaseUrl: []
