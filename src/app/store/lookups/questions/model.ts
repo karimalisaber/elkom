@@ -8,5 +8,6 @@ export interface Question {
     upVotesCount: number,
     downVotesCount: number,
     description: string,
-    tags: string[]
+    tags: string[],
+    hasAttachments?: boolean
 }

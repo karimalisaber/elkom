@@ -1,3 +1,4 @@
+import { askQuestion } from './../../../../store/lookups/questions/actions';
 import { loadTags } from './../../../../store/lookups/tags/actions';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -5,7 +6,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { BehaviorSubject, combineLatest, filter, finalize, Subscription, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { LookupService } from 'src/app/services/swagger/lookup.service';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { SelectLookup } from 'src/app/store/lookups';
 
@@ -34,7 +34,7 @@ export class AskQuestionComponent implements OnInit {
   })
 
 
- 
+
 
 
 
@@ -43,7 +43,6 @@ export class AskQuestionComponent implements OnInit {
     private fb: FormBuilder,
     private modalRef: NzModalRef<AskQuestionComponent>,
     private auth: AuthService,
-    private lookupService: LookupService,
     private store: Store<any>
   ) {
   }
@@ -80,9 +79,29 @@ export class AskQuestionComponent implements OnInit {
 
 
   onSubmit() {
+    this.setLoading(true)
+    
+    let body: any = {}
 
+    for (let key in this.form.value) {
+      if (key !== 'files') {
+        body[key] = this.form.value[key]
+      }
+    }
+
+    if (this.form.value.files?.length) {
+      body.hasAttachments = true;
+    } else {
+      body.hasAttachments = false
+    }
+
+    this.store.dispatch(
+      askQuestion({
+        payload: body,
+        files: this.form?.value?.files?.map((res: any) => res.originFileObj)
+      })
+    )
   }
-
 
   fileList: NzUploadFile[] = [];
   previewImage: string | undefined = '';

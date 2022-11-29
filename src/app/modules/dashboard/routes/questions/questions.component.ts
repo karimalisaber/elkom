@@ -49,7 +49,7 @@ export class QuestionsComponent implements OnInit {
       nzContent: AskQuestionComponent, 
       nzWidth: '80%',
       nzOkText: this.translateService.instant("submit"),
-      nzOkDisabled:  true,
+      nzOkDisabled:  false,
       nzCancelText: this.translateService.instant("cancel"),
       nzClosable: false,
     })

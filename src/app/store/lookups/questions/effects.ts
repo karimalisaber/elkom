@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap, map, catchError, of, distinct, Observable, take } from 'rxjs';
+import { mergeMap, map, catchError, of, distinct, Observable, take, switchMap, combineLatest } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CustomResponse } from '../../store.interface';
 import * as actions from './actions'
@@ -11,7 +11,7 @@ const BaseUrl = environment.baserUrl
 
 @Injectable()
 export class QuestionsEffect {
-    
+
     load$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.loadQuestions),
@@ -25,11 +25,61 @@ export class QuestionsEffect {
         )
     );
 
-    load(): Observable<CustomResponse<Question[]>>{
+    load(): Observable<CustomResponse<Question[]>> {
         const url = BaseUrl + '/questions/list'
         return this.http.get<CustomResponse<Question[]>>(url)
     }
+
+    ask$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.askQuestion),
+            // take(1),
+            mergeMap(({ payload, files}) => this.ask(payload, files)
+                .pipe(
+                    map((response: any) => actions.askQuestionSuccess({ response })),
+                    catchError((error) => of(actions.askQuestionFailure({ error })))
+                ),
+            )
+        )
+    );
+
+
+
+    uploadQuestionFiles(id: string, file: File){
+        const url = BaseUrl + `/questions/attachments/upload?id=${id}`
+        
+        let body = new FormData();
+        body.append('files', file)
+        return this.http.post(url + `/upload?id=${id}`, body )
+      }
     
+
+      ask(payload: Partial< Question>, files: File[]) {
+        const url = BaseUrl + '/questions/add'
+       
+        if(!payload.hasAttachments){
+         let requestBody ={
+            hasAttachments: false,
+            text: payload.text || undefined,
+            tags: payload.tags || undefined,
+            description: payload.description ? payload.description.replace(/\n/g, '<br>') : undefined
+          }
+    
+          return this.http.post(url, requestBody).pipe(map((response: any) => response?.data ?? null))
+        }else{
+          let requestBody ={
+            hasAttachments: true,
+            text: payload.text || undefined,
+            tags: payload.tags || undefined,
+            description: payload.description ? payload.description.replace(/\n/g, '<br>') : undefined
+          }
+      
+          let request = this.http.post(url, requestBody).pipe(map((response: any) => response?.data ?? null))
+          return request.pipe(switchMap(res=> combineLatest([...files.map(file=> this.uploadQuestionFiles(res.id,file))])))
+        }
+      }
+    
+
     constructor(
         private http: HttpClient,
         private actions$: Actions

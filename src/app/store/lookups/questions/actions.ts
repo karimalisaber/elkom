@@ -18,4 +18,22 @@ export const loadQuestionsFailure = createAction(
 
 
 
+export const askQuestion = createAction(
+    '[Root/Lookups] askQuestion',
+    props<{ payload: Partial<Question>, files: File[] }>()
+
+);
+
+export const askQuestionSuccess = createAction(
+    '[Root/Lookups] askQuestion Success',
+    props<{ response: CustomResponse<Question[]> }>()
+);
+
+export const askQuestionFailure = createAction(
+    '[Root/Lookups] askQuestions Failure',
+    props<{ error: any }>()
+);
+
+
+
 
