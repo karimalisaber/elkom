@@ -1,7 +1,7 @@
 <app-tags></app-tags>
 
-<div *ngFor="let item of [1,2,3,4,5,6,7]" class="wrapper">
-    <app-question-card></app-question-card>
+<div *ngFor="let question of questions$ | async" class="wrapper">
+    <app-question-card [question]="question"></app-question-card>
 </div>
 
 

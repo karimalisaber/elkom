@@ -1,9 +1,11 @@
+import { SelectLookup } from 'src/app/store/lookups';
+import { loadQuestions } from './../../../../store/lookups/questions/actions';
 import { Component, OnInit } from '@angular/core';
 import { Actions } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { take } from 'rxjs';
+import { take, map } from 'rxjs';
 import { AskQuestionComponent } from '../../components/ask-question/ask-question.component';
 import { loadTags } from './../../../../store/lookups/tags/actions';
 
@@ -13,6 +15,8 @@ import { loadTags } from './../../../../store/lookups/tags/actions';
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
+  questions$ = this.store.pipe(select(SelectLookup().questions.all))
+  isLoaded$ = this.store.pipe(select(SelectLookup().questions.loaded))
   constructor(
     private modal: NzModalService,
     private translateService: TranslateService,
@@ -21,11 +25,22 @@ export class QuestionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.questions$.subscribe(res=>{
+      console.log(res,'questions')
+    })
+
+    this.isLoaded$.subscribe(res=>{
+      console.log(res,'is loaded')
+    })
+    
+    
+    
     this.dispatcher()
   }
 
   dispatcher(){
-    this.store.dispatch(loadTags())
+    this.store.dispatch(loadTags()) // inside child
+    this.store.dispatch(loadQuestions())
   }
 
   openAskQuestionModal() {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Question } from 'src/app/store/lookups/questions/model';
 
 @Component({
   selector: 'app-question-card',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-card.component.scss']
 })
 export class QuestionCardComponent implements OnInit {
-
+  @Input() question!: Question
   constructor() { }
 
   ngOnInit(): void {
