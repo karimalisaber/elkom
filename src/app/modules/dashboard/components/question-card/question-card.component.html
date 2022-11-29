@@ -2,20 +2,18 @@
 <div  class="main-wrapper main-container">
     <div class="header d-flex justify-between align-center">
         <h1 routerLink="/dashboard/questions/details">
-            {{question.title}}
+            {{question.text}}
         </h1>
 
         <span class="date second-background">
-            15/2/2022
+            {{question.created | date}}
         </span>
     </div>
 
     <nz-divider></nz-divider>
 
     <p class="description">
-        lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatibus! Esse quas obcaecati ipsa iure
-        totam? Sequi ipsum, suscipit, alias nulla, numquam illo impedit maiores explicabo deserunt similique magni
-        corporis?
+       {{question.description}}
     </p>
 
 
@@ -23,7 +21,7 @@
         <div class="item user">
             <img width="20" height="20"width="20" height="20" src="assets/imgs/icons/user.svg" alt="">
             
-            Karim
+            {{question.askedBy}}
         </div>
 
         <!-- <div class="item share">
@@ -40,21 +38,21 @@
         </div>
 
         <div nz-tooltip  class="item answer main-border success">
-            2 answers
+            {{question.answersCount}} {{'answers' | translate}}
         </div>
 
 
 
         <div nz-tooltip [nzTooltipTitle]="'helpful' | translate" class="item vote main-border success">
             <img src="assets/imgs/icons/right.svg" alt="">
+            {{question.upVotesCount}} {{'votes' | translate}}
 
-            11 votes
         </div>
 
         <div nz-tooltip [nzTooltipTitle]="'notHelpful' | translate" class="item vote danger-border danger">
             <img src="assets/imgs/icons/close.svg" alt="">
+            {{question.downVotesCount}} {{'votes' | translate}}
 
-            6 votes
         </div>
     </div>
 </div>

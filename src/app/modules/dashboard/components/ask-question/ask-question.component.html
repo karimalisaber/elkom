@@ -1,9 +1,14 @@
 <div class="wrapper">
 
     <form nz-form [formGroup]="form" nzLayout="vertical">
-
-        <!-- Level -->
         <div class="wrapper">
+            <label for="">{{'tag' | translate}}</label>
+            <ng-select [multiple]="true" bindLabel="title" bindValue="id" [items]="tags$ | async" formControlName="levelId">
+            </ng-select>
+        </div>
+
+
+        <!-- <div class="wrapper">
                 <ng-select placeholder="{{'level' | translate}}" *ngIf="levels$ | async as levels" formControlName="levelId"
                     (ngModelChange)="onLevelChange($event)">
                     <label for="">karim</label>
@@ -13,7 +18,6 @@
                 </ng-select>
         </div>
 
-        <!-- Subject -->
 
         <div class="wrapper">
                 <ng-select placeholder="{{'subject' | translate}}" *ngIf="subjects$ | async as subjects" formControlName="subjectId"
@@ -25,7 +29,6 @@
         </div>
 
 
-        <!-- Lecture -->
         <div class="wrapper">
             <ng-select placeholder="{{'lecture' | translate}}" *ngIf="lectures$ | async as lectures" formControlName="subjectId">
                 <ng-option *ngFor="let option of lectures" >
@@ -33,13 +36,13 @@
                 </ng-option>
             </ng-select>
            
-        </div>
+        </div> -->
 
         <!-- Question Text -->
         <div class="form-wrapper wrapper">
             <label>{{"questionText" | translate}}</label>
-            <nz-form-control >
-                <input nz-input type="text" [placeholder]="'QUESTION_TEXT' | translate" nzSize="large"
+            <nz-form-control>
+                <input nz-input type="text" [placeholder]="'questionText' | translate" nzSize="large"
                     formControlName="text" />
             </nz-form-control>
         </div>
@@ -50,31 +53,31 @@
             <label>{{"description" | translate}}</label>
             <nz-form-control>
                 <textarea rows="4" formControlName="description" nz-input
-                    [placeholder]="'ENTER_QUESTION_DESC' | translate"></textarea>
+                    [placeholder]="'description' | translate"></textarea>
             </nz-form-control>
         </div>
 
 
-            <div class="img-wrapper">
-                <ng-container>
-                    <div class="clearfix">
-                        <nz-upload nzListType="picture-card" [(nzFileList)]="fileList"
-                            [nzShowButton]="fileList.length < 8" [nzPreview]="handlePreview" nzName="file"
-                            [nzMultiple]="true" (nzChange)="onUploadChange($event)">
-                                <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline" ></span>
+        <div class="img-wrapper">
+            <ng-container>
+                <div class="clearfix">
+                    <nz-upload nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8"
+                        [nzPreview]="handlePreview" nzName="file" [nzMultiple]="true"
+                        (nzChange)="onUploadChange($event)">
+                        <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline"></span>
 
-                        </nz-upload>
-                        <span class="text-capitalize">{{'addImg' | translate}}</span>
+                    </nz-upload>
+                    <span class="text-capitalize">{{'addImg' | translate}}</span>
 
 
-                        <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
-                            (nzOnCancel)="previewVisible = false">
-                            <ng-template #modalContent>
-                                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-                            </ng-template>
-                        </nz-modal>
-                    </div>
-                </ng-container>
-            </div>
+                    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+                        (nzOnCancel)="previewVisible = false">
+                        <ng-template #modalContent>
+                            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                        </ng-template>
+                    </nz-modal>
+                </div>
+            </ng-container>
+        </div>
     </form>
 </div>

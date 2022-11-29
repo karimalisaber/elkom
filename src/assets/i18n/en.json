@@ -49,5 +49,7 @@
   "description" : "description",
   "submit" : "submit",
   "edit" : "edit",
-  "userName" : "user name"
+  "userName" : "user name",
+  "answers" : "answers",
+  "votes" : "votes"
 }

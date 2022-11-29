@@ -1,3 +1,5 @@
+import { loadTags } from './../../../../store/lookups/tags/actions';
+import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
@@ -5,6 +7,7 @@ import { BehaviorSubject, combineLatest, filter, finalize, Subscription, switchM
 import { AuthService } from 'src/app/services/auth.service';
 import { LookupService } from 'src/app/services/swagger/lookup.service';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { SelectLookup } from 'src/app/store/lookups';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -21,28 +24,19 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   styleUrls: ['./ask-question.component.scss']
 })
 export class AskQuestionComponent implements OnInit {
+  tags$ = this.store.pipe(select((SelectLookup().tags.all)))
+
   form = this.fb.group({
     text: ["", Validators.required],
-    lectureId: ["", Validators.required],
-    subjectId: [''],
-    levelId: [''],
+    tags: [],
     description: [""],
     files: []
   })
 
-  subject$ = new BehaviorSubject<string>('')
-  level$ = new BehaviorSubject<string>('')
 
-  lectures$ = combineLatest([this.subject$, this.level$.pipe(filter(res => !!res))])
-    .pipe(switchMap(([subject, level]) => {
-      return this.lookupService.fetchLectures(subject, level)
-    }))
+ 
 
-  subscription: Subscription = new Subscription();;
 
-  subjects$ = this.level$.pipe(filter(res => !!res), switchMap(level => this.lookupService.fetchSubjects(level)));
-
-  levels$ = this.lookupService.fetchLevels().pipe(tap(res => { this.form.get('levelId')?.setValue(res[0].id); this.level$.next(res[0].id) }));
 
 
   constructor(
@@ -50,28 +44,17 @@ export class AskQuestionComponent implements OnInit {
     private modalRef: NzModalRef<AskQuestionComponent>,
     private auth: AuthService,
     private lookupService: LookupService,
+    private store: Store<any>
   ) {
-
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+  dispatcher() {
+    this.store.dispatch(loadTags())
   }
 
-  onSubjectChange(e: string) {
-    this.form.get('lectureId')?.reset()
-    this.subject$.next(e)
-  }
-
-  onLevelChange(e: any) {
-    this.form.get('lectureId')?.reset()
-    this.form.get('subjectId')?.reset()
-
-    this.level$.next(e)
-  }
 
   ngOnInit(): void {
-    this.observeForm()
+    this.dispatcher()
 
     this.modalRef.updateConfig({
       nzOnOk: () => {
@@ -81,24 +64,6 @@ export class AskQuestionComponent implements OnInit {
     })
   }
 
-  observeForm() {
-    let form = this.form.valueChanges;
-
-    this.subscription = form.subscribe(res => {
-
-      // if ((res.text && res.lectureId) || res.files?.length > 0) {
-      //   this.modalRef.updateConfig({
-      //     nzOkDisabled: false
-      //   })
-      // } else {
-      //   this.modalRef.updateConfig({
-      //     nzOkDisabled: true
-      //   })
-      // }
-
-    })
-
-  }
 
 
   onUploadChange({ file, fileList }: NzUploadChangeParam): void {
@@ -131,9 +96,5 @@ export class AskQuestionComponent implements OnInit {
     this.previewVisible = true;
   };
 
-
-  // onCkeditorChange(e:string){
-  //   this.form.get('description').setValue(e)
-  // }
 
 }
