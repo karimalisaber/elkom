@@ -3,7 +3,7 @@
     <form nz-form [formGroup]="form" nzLayout="vertical">
         <div class="wrapper">
             <label for="">{{'tag' | translate}}</label>
-            <ng-select [multiple]="true" bindLabel="title" bindValue="id" [items]="tags$ | async" formControlName="levelId">
+            <ng-select [multiple]="true" bindLabel="title" bindValue="id" [items]="tags$ | async" formControlName="tags">
             </ng-select>
         </div>
 

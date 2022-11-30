@@ -66,7 +66,7 @@ export class AskQuestionComponent implements OnInit {
 
 
   onUploadChange({ file, fileList }: NzUploadChangeParam): void {
-    // this.form.get('files')?.setValue(fileList)
+    this.form.get('files')?.setValue(fileList)
   }
 
   setLoading(state: boolean) {
@@ -80,7 +80,7 @@ export class AskQuestionComponent implements OnInit {
 
   onSubmit() {
     this.setLoading(true)
-    
+
     let body: any = {}
 
     for (let key in this.form.value) {

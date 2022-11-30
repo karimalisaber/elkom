@@ -56,7 +56,7 @@ export class QuestionsEffect {
 
       ask(payload: Partial< Question>, files: File[]) {
         const url = BaseUrl + '/questions/add'
-       
+       debugger
         if(!payload.hasAttachments){
          let requestBody ={
             hasAttachments: false,

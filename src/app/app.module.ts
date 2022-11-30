@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import * as fromLookups from './store/lookups'
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { HttpInterceptor } from './services/interceptors/http.interceptor';
 export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -48,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

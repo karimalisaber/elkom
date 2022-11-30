@@ -77,11 +77,13 @@ export class SessionEffects {
     login(user: any): Observable<CustomResponse<User>> {
         const url = BaseUrl + '/authentications/SignIn'
         return this.http.post<CustomResponse<Session>>(url, user).pipe(
-
+            tap(res=>{
+                this.auth.setToken(res.data.token)
+                this.auth.setRefreshToken(res.data.refreshToken)
+            }),
             switchMap((res: any) => {
                 if (res.succeeded) {
-                    this.auth.setToken(res.data.token)
-                    this.auth.setRefreshToken(res.data.refreshToken)
+                
                     return this.getUser()
                 } else {
                     throw (res)
