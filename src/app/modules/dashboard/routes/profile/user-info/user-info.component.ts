@@ -22,10 +22,10 @@ export class UserInfoComponent implements OnInit {
   
   initForm() {
     this.form = this.fb.group({
-      email: [],
-      fullName: [],
-      dateOfBirth: [],
-      mobileNumber: []
+      email: [this.user?.email],
+      fullName: [this.user?.fullName],
+      birthDate: [new Date(this.user?.birthDate).toDateString()],
+      mobileNumber: [this.user?.mobileNumber?.number]
     })
   }
 }
