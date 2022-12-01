@@ -1,7 +1,7 @@
-<div class="profile-wrapper main-container">
-    <app-user-info></app-user-info>
+<div *ngIf="user$ | async as user" class="profile-wrapper main-container">
+    <app-user-info [user]="user"></app-user-info>
 
-    <app-student-profile></app-student-profile>
+    <app-student-profile [user]="user"></app-student-profile>
 
 </div>
 

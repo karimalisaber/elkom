@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { loginFailure, teacherSignupSuccess, studentSignupSuccess, teacherSignupFailure, studentSignupFailure } from './../store/session/session.actions';
 import { Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
@@ -24,7 +25,8 @@ const ErrorSubjects$ =[
 export class ToastrService {
   constructor(
     private notification : NzNotificationService,
-    private action$: Actions
+    private action$: Actions,
+    private translate: TranslateService
   ){
    
   }
@@ -33,7 +35,8 @@ export class ToastrService {
     SuccessSubjects$.forEach(observable=>{
       this.action$.pipe(ofType(observable))
         .subscribe(res=>{
-          this.notification.success('done' ,'content')
+          console.log(res,'toastr')
+          this.notification.success(res.type ,'')
         })
     })
   
@@ -41,11 +44,31 @@ export class ToastrService {
     ErrorSubjects$.forEach(observable=>{
       this.action$.pipe(ofType(observable))
         .subscribe(res=>{
-          this.notification.error('done' ,'content')
+          this.notification.error(res.type , '')
         })
     })
   
   }
 
+
+  success(title: string, desc: string = ''){
+    const _title = this.translate.instant(title)
+    
+    let _desc
+    if(_desc)
+     _desc = this.translate.instant(desc)
+
+    this.notification.success(_title ,_desc)
+
+  }
+
+  error(title: string, desc: string = ''){
+    const _title = this.translate.instant(title)
+    let _desc
+    if(_desc)
+     _desc = this.translate.instant(desc)
+
+    this.notification.error(_title ,_desc)
+  }
 
 }

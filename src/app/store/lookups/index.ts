@@ -87,6 +87,8 @@ export function SelectLookup(){
         },
         questions :{
             all: createSelector(selectQuestionsFeature, fromQuestions.selectAll),
+            by_id: (id) => createSelector(selectQuestionsFeature, fromQuestions.selectById(id)),
+
             status: createSelector(selectQuestionsFeature, (state) => selectStatus(state)),
             loaded: createSelector(selectQuestionsFeature, (state) => selectStatus(state).loaded),
         },

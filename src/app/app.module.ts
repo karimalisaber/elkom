@@ -15,6 +15,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import * as fromLookups from './store/lookups'
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { HttpInterceptor } from './services/interceptors/http.interceptor';
+import { SessionEffects } from './store/session/session.effects';
 export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
 
     EffectsModule.forRoot(),
     EffectsModule.forFeature([
-      ...fromLookups.effects
+      ...fromLookups.effects,
+      SessionEffects
     ])
   ],
   providers: [

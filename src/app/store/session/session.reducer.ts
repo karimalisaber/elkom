@@ -31,6 +31,9 @@ export const reducer = createReducer(
     on(actions.loginSuccess, (state, { data }) => {
         return { ...state, session: {...state.session, user: data.data}, loading: false, loaded: true }
     }),
+    on(actions.getUserSuccess, (state, { data }) => {
+        return { ...state, session: {...state.session, user: data.data}, loading: false, loaded: true }
+    }),
     on(actions.studentSignupSuccess, (state, { session }) => {
         return { ...state, session, loading: false, loaded: true }
     }),

@@ -2,7 +2,7 @@
     {{'myProfile' | translate}}
 </h1>
 
-<form [formGroup]="form" [nzGutter]="20" nz-row class="main-wrapper">
+<form *ngIf="form" [formGroup]="form" [nzGutter]="20" nz-row class="main-wrapper">
     
     <div class="small-gap item w-100" nz-col nzSpan="12">
         <label>{{"email" | translate}}</label>

@@ -9,5 +9,17 @@ export interface Question {
     downVotesCount: number,
     description: string,
     tags: string[],
-    hasAttachments?: boolean
+    hasAttachments?: boolean,
+
+    answers: Answer[]
+    
+
+}
+
+export interface Answer {
+    id: string,
+    text: string,
+    created: string,
+    answerdBy: string,
+    answerdById: string
 }

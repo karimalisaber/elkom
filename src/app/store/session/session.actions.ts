@@ -21,6 +21,21 @@ export const loginFailure = createAction(
 );
 
 
+export const getUser = createAction(
+    '[Root/Session] getUser'
+);
+
+export const getUserSuccess = createAction(
+    '[Root/Session] getUser Success',
+    props<{ data: CustomResponse<User>}>()
+);
+
+export const getUserFailure = createAction(
+    '[Root/Session] getUser Failure',
+    props<{ error: any }>()
+);
+
+
 
 export const teacherSignup = createAction(
     '[Root/Session] teacher signup',

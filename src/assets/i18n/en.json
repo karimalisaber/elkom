@@ -51,5 +51,6 @@
   "edit" : "edit",
   "userName" : "user name",
   "answers" : "answers",
-  "votes" : "votes"
+  "votes" : "votes",
+  "questionAnswers" : "question answers"
 }

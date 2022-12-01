@@ -27,6 +27,20 @@ export class SessionEffects {
     );
 
 
+    getUser$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.getUser),
+            mergeMap(() => this.getUser()
+                .pipe(
+                    map(
+                        data => actions.getUserSuccess({ data })),
+                    catchError((error) => of(actions.getUserFailure({ error })))
+                ),
+            )
+        )
+    );
+
+
     teacherSignup$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.teacherSignup),
@@ -77,13 +91,13 @@ export class SessionEffects {
     login(user: any): Observable<CustomResponse<User>> {
         const url = BaseUrl + '/authentications/SignIn'
         return this.http.post<CustomResponse<Session>>(url, user).pipe(
-            tap(res=>{
+            tap(res => {
                 this.auth.setToken(res.data.token)
                 this.auth.setRefreshToken(res.data.refreshToken)
             }),
             switchMap((res: any) => {
                 if (res.succeeded) {
-                
+
                     return this.getUser()
                 } else {
                     throw (res)

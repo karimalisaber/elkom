@@ -1,3 +1,6 @@
-<app-question-card></app-question-card>
+<app-question-card [question]="question$ | async"></app-question-card>
 
-<app-question-answer></app-question-answer>
+<ng-container *ngIf="question$ | async as question">
+    <app-question-answer *ngIf="question.answers" [answers]="question.answers"></app-question-answer>
+
+</ng-container>

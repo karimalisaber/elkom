@@ -40,10 +40,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzSelectModule,
     TranslateModule.forChild(),
     NzButtonModule,
-    NgSelectModule,
-    EffectsModule.forFeature([
-      SessionEffects
-    ])
+    NgSelectModule
   
   ]
 })

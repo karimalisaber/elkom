@@ -1,5 +1,6 @@
-import { FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/store/session/session.model';
 
 @Component({
   selector: 'app-user-info',
@@ -7,15 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-  form = this.fb.group({
-    email: [],
-    fullName: [],
-    dateOfBirth: [],
-    mobileNumber: []
-  })
+  @Input() user : User
+  form : FormGroup;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm()
+
   }
 
+
+  
+  initForm() {
+    this.form = this.fb.group({
+      email: [],
+      fullName: [],
+      dateOfBirth: [],
+      mobileNumber: []
+    })
+  }
 }

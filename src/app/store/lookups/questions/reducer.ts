@@ -5,11 +5,15 @@ import { initialStatus, Status } from '../../status.interface';
 import * as actions from './actions';
 export const featureKey = 'questions';
 
-export interface State extends EntityState<Question>, Status {
+interface questionState extends Question{
+    loaded?: boolean
+}
+
+export interface State extends EntityState<questionState>, Status {
     // additional entities state properties
 }
 
-export const adapter: EntityAdapter<Question> = createEntityAdapter<Question>();
+export const adapter: EntityAdapter<questionState> = createEntityAdapter<questionState>();
 
 export const initialState: State = adapter.getInitialState({
     // additional entity state properties
@@ -26,6 +30,15 @@ export const reducer = createReducer(
     ),
     on(actions.loadQuestionsFailure, (state, { error }) => ({ ...state, error, loading: false, loaded: false })),
 
+
+    on(actions.loadQuestion,
+        (state) => ({ ...state, loading: true })),
+
+    on(actions.loadQuestionSuccess,
+        (state, action) => adapter.upsertOne({...action.response.data, loaded: true}, { ...state, loading: false, loaded: true })
+    ),
+    on(actions.loadQuestionFailure, (state, { error }) => ({ ...state, error, loading: false, loaded: false })),
+
 );
 
 
@@ -35,3 +48,6 @@ export const {
     selectAll,
     selectTotal,
 } = adapter.getSelectors();
+
+
+export const selectById = (id: string) => (state: State) => state.entities[id];

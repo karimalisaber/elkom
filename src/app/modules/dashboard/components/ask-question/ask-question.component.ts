@@ -1,10 +1,12 @@
-import { askQuestion } from './../../../../store/lookups/questions/actions';
+import { ToastrService } from './../../../../services/toastr.service';
+import { Actions, ofType } from '@ngrx/effects';
+import { askQuestion, askQuestionSuccess } from './../../../../store/lookups/questions/actions';
 import { loadTags } from './../../../../store/lookups/tags/actions';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
-import { BehaviorSubject, combineLatest, filter, finalize, Subscription, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, finalize, Subscription, switchMap, tap, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { SelectLookup } from 'src/app/store/lookups';
@@ -42,8 +44,9 @@ export class AskQuestionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private modalRef: NzModalRef<AskQuestionComponent>,
-    private auth: AuthService,
-    private store: Store<any>
+    private store: Store<any>,
+    private actions: Actions,
+    private toastr: ToastrService
   ) {
   }
 
@@ -101,6 +104,12 @@ export class AskQuestionComponent implements OnInit {
         files: this.form?.value?.files?.map((res: any) => res.originFileObj)
       })
     )
+
+    this.actions.pipe(ofType(askQuestionSuccess),take(1)).subscribe(res=>{
+      this.modalRef.close();
+      console.log(res.type)
+      this.toastr.success(res.type)
+    })
   }
 
   fileList: NzUploadFile[] = [];

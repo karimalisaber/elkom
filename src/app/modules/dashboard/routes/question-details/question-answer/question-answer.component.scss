@@ -17,15 +17,15 @@
 }
 
 .content {
-    padding: 1rem;
-}
-
-
-.date-wrapper {
-
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
+
+.content-wrapper{
+    padding: 1rem;
+
+}
+
 
 .date {
     border-radius: .2rem;

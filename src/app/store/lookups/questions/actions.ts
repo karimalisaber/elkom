@@ -18,6 +18,25 @@ export const loadQuestionsFailure = createAction(
 
 
 
+export const loadQuestion = createAction(
+    '[Root/Lookups] loadQuestion',
+    props<{ id: string }>()
+
+);
+
+export const loadQuestionSuccess = createAction(
+    '[Root/Lookups] loadQuestion Success',
+    props<{ response: CustomResponse<Question> }>()
+);
+
+export const loadQuestionFailure = createAction(
+    '[Root/Lookups] loadQuestion Failure',
+    props<{ error: any }>()
+);
+
+
+
+
 export const askQuestion = createAction(
     '[Root/Lookups] askQuestion',
     props<{ payload: Partial<Question>, files: File[] }>()
@@ -25,7 +44,7 @@ export const askQuestion = createAction(
 );
 
 export const askQuestionSuccess = createAction(
-    '[Root/Lookups] askQuestion Success',
+    'askQuestion Success',
     props<{ response: CustomResponse<Question[]> }>()
 );
 
