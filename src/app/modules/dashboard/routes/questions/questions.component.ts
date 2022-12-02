@@ -8,6 +8,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { take, map } from 'rxjs';
 import { AskQuestionComponent } from '../../components/ask-question/ask-question.component';
 import { loadTags } from './../../../../store/lookups/tags/actions';
+import { selectRole } from 'src/app/store/session/session.reducer';
 
 @Component({
   selector: 'app-questions',
@@ -17,6 +18,8 @@ import { loadTags } from './../../../../store/lookups/tags/actions';
 export class QuestionsComponent implements OnInit {
   questions$ = this.store.pipe(select(SelectLookup().questions.all))
   isLoaded$ = this.store.pipe(select(SelectLookup().questions.loaded))
+ role$ = this.store.pipe(select(selectRole))
+
   constructor(
     private modal: NzModalService,
     private translateService: TranslateService,
@@ -25,17 +28,11 @@ export class QuestionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.questions$.subscribe(res=>{
-      console.log(res,'questions')
-    })
-
-    this.isLoaded$.subscribe(res=>{
-      console.log(res,'is loaded')
-    })
-    
-    
-    
     this.dispatcher()
+ 
+    this.role$.subscribe(res=>{
+      console.log(res)
+    })
   }
 
   dispatcher(){

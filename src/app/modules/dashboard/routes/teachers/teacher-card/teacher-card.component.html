@@ -1,16 +1,18 @@
-<div routerLink="/dashboard/teachers/1" class="main-wrapper">
+<div  *ngIf="teacher" [routerLink]="'/dashboard/teachers/' + teacher.id" class="main-wrapper">
     <div class="header-img-wrapper">
-        <img src="assets/imgs/dashboard/unkown-teacher.png" class="rounded-thumb-img" alt="">
+        <img *ngIf="!teacher.avatarUrl" src="assets/imgs/dashboard/unkown-teacher.png" class="rounded-thumb-img" alt="">
+    
+        <img *ngIf="teacher.avatarUrl" [src]="teacher.avatarUrl" alt="">
     </div>
 
     <h5 class="second-text font-weight-medium">
-        Teacher
+        {{'teacher' | translate}}
     </h5>
 
 
     <div class="body text-center">
-        <p class="text-capitalize font-weight-medium">Karim ali saber</p>
-        <p class="small-decs email">karimali201094@gmail.com</p>
+        <p class="text-capitalize font-weight-medium">{{teacher.fullName}}</p>
+        <p class="small-decs email">{{teacher.email}}</p>
     </div>
 
 

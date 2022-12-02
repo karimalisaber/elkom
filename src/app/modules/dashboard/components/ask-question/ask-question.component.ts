@@ -1,23 +1,15 @@
-import { ToastrService } from './../../../../services/toastr.service';
-import { Actions, ofType } from '@ngrx/effects';
-import { askQuestion, askQuestionSuccess } from './../../../../store/lookups/questions/actions';
-import { loadTags } from './../../../../store/lookups/tags/actions';
-import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Actions, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { NzModalRef } from 'ng-zorro-antd/modal';
-import { BehaviorSubject, combineLatest, filter, finalize, Subscription, switchMap, tap, take } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { take } from 'rxjs';
 import { SelectLookup } from 'src/app/store/lookups';
-
-const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
+import { getBase64 } from 'src/app/utils/help';
+import { ToastrService } from './../../../../services/toastr.service';
+import { askQuestion, askQuestionSuccess } from './../../../../store/lookups/questions/actions';
+import { loadTags } from './../../../../store/lookups/tags/actions';
 
 
 @Component({
@@ -34,12 +26,6 @@ export class AskQuestionComponent implements OnInit {
     description: [""],
     files: []
   })
-
-
-
-
-
-
 
   constructor(
     private fb: FormBuilder,

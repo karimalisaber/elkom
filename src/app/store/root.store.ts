@@ -17,4 +17,4 @@ export const reducers: ActionReducerMap<State> = {
 
 // Session
 const selectSessionFeature = createFeatureSelector<Session.State>(Session.featureKey);
-export const selectSession = createSelector(selectSessionFeature, Session.getSession);
+export const selectSession = createSelector(selectSessionFeature, Session.selectSession);

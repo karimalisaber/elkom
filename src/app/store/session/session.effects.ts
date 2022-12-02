@@ -73,7 +73,10 @@ export class SessionEffects {
 
         return this.http.post(url, user).pipe(
             switchMap((res: any) => {
+                // debugger
                 if (res.succeeded) {
+                    this.auth.setToken(res.data.authorityToken)
+
                     return this.login(user)
                 } else {
                     throw (res)
@@ -85,7 +88,15 @@ export class SessionEffects {
     addStudent(user: User) {
         const url = BaseUrl + '/users/students/add'
 
-        return this.http.post(url, user)
+        return this.http.post(url, user).pipe(
+            switchMap((res: any) => {
+                if (res.succeeded) {
+                    return this.login(user)
+                } else {
+                    throw (res)
+                }
+            })
+        )
     }
 
     login(user: any): Observable<CustomResponse<User>> {

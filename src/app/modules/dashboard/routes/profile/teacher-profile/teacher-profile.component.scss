@@ -1,0 +1,14 @@
+.specialties {
+    border-radius: 5px;
+    padding: .4rem;
+    margin: 1rem 0;
+    display: flex;
+    gap: 10px;
+    .item {
+        border-radius: 5px;
+        padding: .2rem .6rem;
+        display: inline-block;
+
+        
+    }
+}

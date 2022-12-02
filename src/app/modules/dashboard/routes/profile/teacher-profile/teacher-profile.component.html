@@ -1,1 +1,43 @@
-<p>teacher-profile works!</p>
+<ng-container *ngIf="form">
+    <h1 class="title">
+        {{'teacherInfo' | translate}}
+    </h1>
+    
+    
+    <ng-container *ngIf="true">
+        <label for="">{{'specialties' | translate}}</label>
+        <div class="specialties main-border">
+            <div class="item main-border">
+                <img class="avatar" width="15" height="15" src="assets/imgs/logo.png" alt="">
+    
+                Chemistry
+            </div>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngIf="true">
+        <h1 class="title">
+            {{'certificates' | translate}}
+        </h1>
+
+        <div class="clearfix">
+            <nz-upload nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8"
+                [nzPreview]="handlePreview" nzName="file" [nzMultiple]="true"
+                (nzChange)="onUploadChange($event)">
+                <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline"></span>
+
+            </nz-upload>
+
+            <span class="text-capitalize">{{'addCertificates' | translate}}</span>
+
+
+            <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+                (nzOnCancel)="previewVisible = false">
+                <ng-template #modalContent>
+                    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                </ng-template>
+            </nz-modal>
+        </div>
+    </ng-container>
+
+</ng-container>

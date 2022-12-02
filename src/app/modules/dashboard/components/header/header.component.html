@@ -3,11 +3,17 @@
         <input class="search-input" nz-input [placeholder]="'search' | translate" autofocus />
     </nz-input-group>
 
-    <button>
-        <img src="assets/imgs/icons/notification.svg" alt="">
+        <button class="notification-wrapper main-border circle">
+            <img src="assets/imgs/icons/notification.svg" alt="">
 
-      
-    </button>
+            <nz-badge [nzCount]="0" nzShowZero>
+                <a class="head-example"></a>
+              </nz-badge>
+    
+        </button>
+   
+        
+   
 
     <button routerLink="/auth/signup">
         <img src="assets/imgs/icons/login-user.svg" alt="">

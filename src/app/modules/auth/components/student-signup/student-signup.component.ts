@@ -22,7 +22,7 @@ export class StudentSignupComponent implements OnInit {
     fullName: ['karim saber', [Validators.required]],
     gradeId: ['', [Validators.required]],
     email: ['karim@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-    phoneNumber: ['01097628565', [Validators.required, Validators.pattern(/^[+()\d-]+$/)]],
+    mobileNumber: ['01097628565', [Validators.required, Validators.pattern(/^[+()\d-]+$/)]],
     birthDate: [null, [Validators.required]],
     gender: [1, Validators.required],
     password: ['1234', [Validators.required]],
@@ -46,7 +46,9 @@ export class StudentSignupComponent implements OnInit {
       username: this.form.value.email,
       fullName: this.form.value.fullName,
       email: this.form.value.email,
-      phoneNumber: this.form.value.phoneNumber,
+      mobileNumber: {
+       number: this.form.value.mobileNumber
+      },
       birthDate: this.form.value.birthDate,
       gender: this.form.value.gender,
       gradeId: this.form.value.gradeId
@@ -56,7 +58,6 @@ export class StudentSignupComponent implements OnInit {
 
     this.actions.pipe(ofType(studentSignupSuccess), take(1))
       .subscribe(res=>{
-        console.log(res)
         this.router.navigate([''])
       })
   

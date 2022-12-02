@@ -52,5 +52,10 @@
   "userName" : "user name",
   "answers" : "answers",
   "votes" : "votes",
-  "questionAnswers" : "question answers"
+  "questionAnswers" : "question answers",
+  "noQuestions" : "sorry there is no questions.",
+  "noTeachers" : "sorry there is no Teachers.",
+  "teacherInfo" : "teacher information",
+  "specialties" : "specialties",
+  "addCertificates" : "add certificates"
 }

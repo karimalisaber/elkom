@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import * as actions from './session.actions';
 import { Session } from './session.model';
 export const featureKey = 'session';
@@ -41,6 +41,11 @@ export const reducer = createReducer(
         return { ...state, session, loading: false, loaded: true }
     }),
 
+
+
+
 );
 
-export const getSession = (state: State) => state.session;
+export const selectSession = (state: State) => state.session;
+const selector = createFeatureSelector(featureKey)
+export const selectRole =  createSelector(selector, (state)=> state['session']?.user?.role)

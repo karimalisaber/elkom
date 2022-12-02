@@ -1,16 +1,25 @@
 <app-tags></app-tags>
 
-<div *ngFor="let question of questions$ | async" class="wrapper">
-    <app-question-card [question]="question"></app-question-card>
-</div>
 
+<ng-container *ngIf="questions$ | async as questions">
 
-<div class=" ask-question-wrapper light-green-background">
-    <div class="d-flex justify-content-center layout">
-        <button (click)="openAskQuestionModal()" nzSize="large" nz-type="primary" nz-button class="text-capitalize main-background text-center">
-            {{'askQuestion' | translate}}
-        </button>
+    <div *ngFor="let question of questions" class="wrapper">
+        <app-question-card [question]="question"></app-question-card>
     </div>
 
-    <div class="bottom"></div>
-</div>
+    <app-no-data *ngIf="questions?.length === 0" [description]="'noQuestions'"></app-no-data>
+</ng-container>
+
+
+<ng-container *ngIf="role$ | async as role">
+
+    <div  *ngIf="role===2" class=" ask-question-wrapper light-green-background">
+        <div class="d-flex justify-content-center layout">
+            <button (click)="openAskQuestionModal()" nzSize="large" nz-type="primary" nz-button class="text-capitalize main-background text-center">
+                {{'askQuestion' | translate}}
+            </button>
+        </div>
+    
+        <div class="bottom"></div>
+    </div>
+</ng-container>

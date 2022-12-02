@@ -16,4 +16,5 @@ export interface User{
     birthDate?: string,
     gender?: number,
     gradeId?: string
+    role: 1 | 2
 }

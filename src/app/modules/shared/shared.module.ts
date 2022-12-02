@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -10,6 +11,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NoDataComponent } from './components/no-data/no-data.component';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 
 const importsExports = [
@@ -23,17 +27,25 @@ const importsExports = [
   NzToolTipModule,
   NgSelectModule,
   NzIconModule,
-  
+  NzEmptyModule,
+  NzBadgeModule
 ]
+const exportsDeclarations =[
+  NoDataComponent
 
+]
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...exportsDeclarations
+  ],
   imports: [
     CommonModule,
+    TranslateModule,
     ...importsExports
   ],
   exports: [
-    ...importsExports
+    ...importsExports,
+    ...exportsDeclarations
   ],
   providers:[
   ]

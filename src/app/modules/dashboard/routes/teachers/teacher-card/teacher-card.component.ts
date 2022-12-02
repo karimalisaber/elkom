@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Teacher } from './../../../../../store/lookups/teachers/model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-teacher-card',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-card.component.scss']
 })
 export class TeacherCardComponent implements OnInit {
-
+  @Input() teacher: Teacher
   constructor() { }
 
   ngOnInit(): void {
