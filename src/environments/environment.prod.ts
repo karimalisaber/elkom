@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: false,
+  baserUrl: 'https://api.elkom.app'
 };

@@ -11,6 +11,7 @@ import { selectSession } from './../../../../store/root.store';
 })
 export class ProfileComponent implements OnInit {
   user$ = this.store.pipe(select(selectSession), map(res=> res.user))
+  // role$ = this.store.pipe(select(selectRole))
 
   constructor(
     private store: Store<any>
