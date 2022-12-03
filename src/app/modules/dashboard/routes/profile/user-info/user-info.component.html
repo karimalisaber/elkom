@@ -3,45 +3,91 @@
 </h1>
 
 <form *ngIf="form" [formGroup]="form" [nzGutter]="20" nz-row class="main-wrapper">
-    
-    <div class="small-gap item w-100" nz-col nzSpan="12">
+
+    <div class="small-gap item w-100" nz-col nzSpan="8">
         <label>{{"email" | translate}}</label>
 
-        <nz-form-item >
+        <nz-form-item>
             <nz-form-control class="w-100" nzErrorTip="'email'" nzHasFeedback>
-                <input  nz-input type="email" [placeholder]="'email' | translate" nzSize="large" formControlName="email" />
+                <input nz-input type="email" [placeholder]="'email' | translate" nzSize="large"
+                    formControlName="email" />
             </nz-form-control>
-        </nz-form-item>    
+        </nz-form-item>
+
+        <button (click)="updateEmail()" class="main-btn">{{'save' | translate}}</button>
+
     </div>
 
-    <div class="item w-100" nz-col nzSpan="12">
-        <label>{{"fullName" | translate}}</label>
+    <div class="small-gap item w-100" nz-col nzSpan="8">
+        <label>{{"userName" | translate}}</label>
 
         <nz-form-item>
-            <nz-form-control class="w-100" nzErrorTip="'fullName'" nzHasFeedback>
-                <input nz-input  [placeholder]="'fullName' | translate" nzSize="large" formControlName="fullName" />
+            <nz-form-control class="w-100" nzErrorTip="'userName'" nzHasFeedback>
+                <input nz-input [placeholder]="'userName' | translate" nzSize="large" formControlName="username" />
             </nz-form-control>
-        </nz-form-item>    
+        </nz-form-item>
+
+        <button (click)="updateEmail()" class="main-btn">{{'save' | translate}}</button>
+
     </div>
 
-
-    <div class="small-gap item w-100" nz-col nzSpan="12">
-        <label>{{"dateOfBirth" | translate}}</label>
-
-        <nz-form-item >
-            <nz-form-control class="w-100" nzErrorTip="'dateOfBirth'" nzHasFeedback>
-                <input  readonly nz-input type="dateOfBirth" [placeholder]="'dateOfBirth' | translate" nzSize="large" formControlName="birthDate" />
-            </nz-form-control>
-        </nz-form-item>    
-    </div>
-
-    <div class="item w-100" nz-col nzSpan="12">
+    <div class="item w-100" nz-col nzSpan="8">
         <label>{{"mobileNumber" | translate}}</label>
 
         <nz-form-item>
             <nz-form-control class="w-100" nzErrorTip="'mobileNumber'" nzHasFeedback>
-                <input nz-input  [placeholder]="'mobileNumber' | translate" nzSize="large" formControlName="mobileNumber" />
+                <input nz-input [placeholder]="'mobileNumber' | translate" nzSize="large"
+                    formControlName="mobileNumber" />
             </nz-form-control>
-        </nz-form-item>    
+        </nz-form-item>
+
+        <button class="main-btn">{{'save' | translate}}</button>
     </div>
+
+    <h1 class="title"  nz-col nzSpan="24">
+        {{'personalInfo' | translate}}
+    </h1>
+
+    <div class="item w-100" nz-col nzSpan="8">
+        <label>{{"fullName" | translate}}</label>
+
+        <nz-form-item>
+            <nz-form-control class="w-100" nzErrorTip="'fullName'" nzHasFeedback>
+                <input nz-input [placeholder]="'fullName' | translate" nzSize="large" formControlName="fullName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <button class="main-btn">{{'save' | translate}}</button>
+
+    </div>
+
+
+
+    <div nz-col nzSpan="8">
+        <label> {{"dateOfBirth" | translate}} </label>
+       
+        <nz-form-item class="w-100">
+            <nz-form-control class="w-100" nzHasFeedback>
+                <nz-date-picker class="w-100" nzSize="large" nzPlaceHolder="{{'chooseDate' | translate}}"
+                    formControlName="birthDate" nzInputReadOnly="true"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+
+
+    <div class="small-gap item w-100"  nz-col nzSpan="8">
+        <label>{{"gender" | translate}}</label>
+        
+        <nz-form-item class="w-100">
+            <nz-form-control class="w-100" nzHasFeedback>
+
+                <nz-select  nzPlaceHolder="{{ 'gender' | translate }}" nzSize="large" class="w-100"
+                    formControlName="gender">
+                    <nz-option [nzLabel]="'MALE' | translate" [nzValue]="1"></nz-option>
+                    <nz-option [nzLabel]="'FEMALE' | translate" [nzValue]="2"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+
 </form>

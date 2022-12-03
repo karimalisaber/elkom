@@ -23,7 +23,7 @@ export class StudentSignupComponent implements OnInit {
     gradeId: ['', [Validators.required]],
     email: ['karim@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     mobileNumber: ['01097628565', [Validators.required, Validators.pattern(/^[+()\d-]+$/)]],
-    birthDate: [null, [Validators.required]],
+    birthDate: ['1990-12-20T02:34:43.869Z', [Validators.required]],
     gender: [1, Validators.required],
     password: ['1234', [Validators.required]],
     confirmPassword: ['1234', [Validators.required]]

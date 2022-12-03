@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,8 @@ import { StudentProfileComponent } from './routes/profile/student-profile/studen
 import { UserInfoComponent } from './routes/profile/user-info/user-info.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { QuestionAnswerComponent } from './routes/question-details/question-answer/question-answer.component';
+import { TeacherCertificatesComponent } from './components/teacher-certificates/teacher-certificates.component';
+import { AddSpecialityDialogComponent } from './components/add-speciality-dialog/add-speciality-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +46,14 @@ import { QuestionAnswerComponent } from './routes/question-details/question-answ
     StudentProfileComponent,
     UserInfoComponent,
     AskQuestionComponent,
-    QuestionAnswerComponent
+    QuestionAnswerComponent,
+    TeacherCertificatesComponent,
+    AddSpecialityDialogComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     DashboardRoutingModule,
     TranslateModule.forChild(),
     NzIconModule,

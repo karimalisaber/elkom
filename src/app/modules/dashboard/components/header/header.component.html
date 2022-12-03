@@ -3,20 +3,60 @@
         <input class="search-input" nz-input [placeholder]="'search' | translate" autofocus />
     </nz-input-group>
 
-        <button class="notification-wrapper main-border circle">
-            <img src="assets/imgs/icons/notification.svg" alt="">
+    <button class="notification-wrapper main-border circle">
+        <img src="assets/imgs/icons/notification.svg" alt="">
 
-            <nz-badge [nzCount]="0" nzShowZero>
-                <a class="head-example"></a>
-              </nz-badge>
-    
-        </button>
-   
-        
-   
-
-    <button routerLink="/auth/signup">
-        <img src="assets/imgs/icons/login-user.svg" alt="">
+        <nz-badge [nzCount]="0" nzShowZero>
+            <a class="head-example"></a>
+        </nz-badge>
 
     </button>
+
+    <ng-container *ngIf="user$ | async as user; then loggedIn; else loggedOut">
+    </ng-container>
+
+    <ng-template  #loggedIn>
+        <button *ngIf="user$ | async as user;" nz-dropdown [nzDropdownMenu]="menu">
+            <img src="assets/imgs/icons/login-user.svg" alt="">
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <div class="menu light-background" nz-menu nzSelectable>
+
+                    <div class="menu-header">
+                        <img width="80" height="80" src="assets/imgs/icons/login-user.svg" alt="">
+
+                        <div class="details">
+                            <h4 class="main-color menu-title" *ngIf="user?.role ===1"> {{'teacher' | translate}}</h4>
+                            <h4 class="main-color menu-title" *ngIf="user?.role ===2"> {{'student' | translate}}</h4>
+
+                            <p class="menu-name">{{user.fullName}}</p>
+
+                            <p class="menu-email">{{user.email}}</p>
+                        </div>
+                    </div>
+
+                    <nz-divider></nz-divider>
+                    <div class="menu-footer">
+                        <button routerLink="/dashboard/profile">{{'viewProfile' | translate}}</button>
+                        <nz-divider></nz-divider>
+
+                        <button (click)="logout()">{{'logout' | translate}}</button>
+                    </div>
+                </div>
+            </nz-dropdown-menu>
+
+        </button>
+
+    </ng-template>
+
+    <ng-template #loggedOut>
+        <button routerLink="/auth/signin">
+            <img src="assets/imgs/icons/login-user.svg" alt="">
+
+        </button>
+
+    </ng-template>
+
+    <!-- kaime -->
+
+
 </div>

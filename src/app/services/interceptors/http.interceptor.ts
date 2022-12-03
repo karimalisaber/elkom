@@ -27,6 +27,6 @@ export class HttpInterceptor implements NgHttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return this.store.pipe(select(selectSession), take(1), switchMap((session: any) => next.handle(this.requestFactory(request, session?.token))))
+    return   next.handle(this.requestFactory(request, localStorage.getItem('token')))
   }
 }

@@ -1,9 +1,6 @@
 import { User } from './../store/session/session.model';
-import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-type Role = 1 | 2
 
 @Injectable({
   providedIn: 'root'
@@ -60,10 +57,7 @@ export class AuthService {
   logOut(){
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('userName');
-  }
-
-  getRole(): Observable <Role>{
-    return of(1)
+    localStorage.removeItem('user');
+    
   }
 }

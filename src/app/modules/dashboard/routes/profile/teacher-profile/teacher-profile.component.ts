@@ -1,8 +1,12 @@
+import { AddSpecialityDialogComponent } from './../../../components/add-speciality-dialog/add-speciality-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { User } from 'src/app/store/session/session.model';
 import { getBase64 } from 'src/app/utils/help';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-teacher-profile',
@@ -17,7 +21,10 @@ export class TeacherProfileComponent implements OnInit {
   previewVisible = false;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modal: NzModalService,
+    private translate: TranslateService
+
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +48,22 @@ export class TeacherProfileComponent implements OnInit {
     this.form.get('files')?.setValue(fileList)
   }
 
+
+  addSpecialty(){
+    this.modal.create({
+      nzTitle: this.translate.instant("addSpecialty"),
+      nzContent: AddSpecialityDialogComponent, 
+      nzWidth: '30%',
+      nzOkText: this.translate.instant("submit"),
+      nzOkDisabled:  false,
+      nzCancelText: this.translate.instant("cancel"),
+      nzClosable: false,
+    })
+      .afterClose
+      .pipe(take(1))
+      .subscribe((state) => {
+        // do the logic here
+      })
+  }
 }
 

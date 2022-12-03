@@ -34,11 +34,13 @@ export const reducer = createReducer(
     on(actions.getUserSuccess, (state, { data }) => {
         return { ...state, session: {...state.session, user: data.data}, loading: false, loaded: true }
     }),
-    on(actions.studentSignupSuccess, (state, { session }) => {
-        return { ...state, session, loading: false, loaded: true }
+    on(actions.studentSignupSuccess, (state, { user }) => {
+        
+        return { ...state, user: state, session:{...state.session, user}, loading: false, loaded: true }
     }),
-    on(actions.teacherSignupSuccess, (state, { session }) => {
-        return { ...state, session, loading: false, loaded: true }
+    on(actions.logout, (state, { }) => initialState),
+    on(actions.teacherSignupSuccess, (state, { user }) => {
+        return { ...state, session:{...state.session, user}, loading: false, loaded: true }
     }),
 
 
@@ -49,3 +51,4 @@ export const reducer = createReducer(
 export const selectSession = (state: State) => state.session;
 const selector = createFeatureSelector(featureKey)
 export const selectRole =  createSelector(selector, (state)=> state['session']?.user?.role)
+export const selectUser =  createSelector(selector, (state)=> state['session']?.user)

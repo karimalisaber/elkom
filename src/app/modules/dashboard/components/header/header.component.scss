@@ -23,3 +23,47 @@
 	}
 }
 
+
+.menu{
+	z-index: 100000 !important;
+	position: relative;
+}
+
+nz-dropdown-menu{
+	z-index: 100000 !important; 
+
+}
+
+.menu-header{
+	display: flex;
+	gap: 10px;
+	padding: .5rem 1.5rem;
+
+
+}
+
+.menu-title{
+	font-weight: normal;
+	font-size: 1.2rem;
+	margin: 0;
+}
+
+.menu-footer{
+	button{
+		padding: .5rem 1.5rem;
+
+	}
+}
+.menu-name{
+	font-size: .9rem;
+}
+
+.menu-email{
+	font-size: .7rem;
+	font-weight: 600;
+}
+
+nz-divider{
+	margin: 0;
+	padding: 0;
+}

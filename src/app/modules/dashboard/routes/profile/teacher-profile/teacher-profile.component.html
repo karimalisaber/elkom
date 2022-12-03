@@ -5,7 +5,17 @@
     
     
     <ng-container *ngIf="true">
-        <label for="">{{'specialties' | translate}}</label>
+        <div class="">
+            <label for="">{{'specialties' | translate}}</label>
+
+       
+        </div>
+        
+        <button (click)="addSpecialty()" class="main-border specialty-btn circle">
+            <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline"></span>
+
+        </button>
+
         <div class="specialties main-border">
             <div class="item main-border">
                 <img class="avatar" width="15" height="15" src="assets/imgs/logo.png" alt="">
@@ -21,15 +31,17 @@
         </h1>
 
         <div class="clearfix">
-            <nz-upload nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8"
+            <div class="upload-wrapper">
+                <nz-upload #upload id="upload" nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 8"
                 [nzPreview]="handlePreview" nzName="file" [nzMultiple]="true"
                 (nzChange)="onUploadChange($event)">
                 <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline"></span>
 
             </nz-upload>
 
-            <span class="text-capitalize">{{'addCertificates' | translate}}</span>
-
+            </div>
+            <!-- <label for="upload"  class="text-capitalize">{{'addCertificates' | translate}}</label> -->
+            
 
             <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
                 (nzOnCancel)="previewVisible = false">
@@ -38,6 +50,9 @@
                 </ng-template>
             </nz-modal>
         </div>
+
+        <app-teacher-certificates></app-teacher-certificates>
+
     </ng-container>
 
 </ng-container>

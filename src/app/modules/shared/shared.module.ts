@@ -14,7 +14,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 const importsExports = [
   NzGridModule,
@@ -28,7 +31,10 @@ const importsExports = [
   NgSelectModule,
   NzIconModule,
   NzEmptyModule,
-  NzBadgeModule
+  NzBadgeModule,
+  NzTableModule,
+  NzDropDownModule,
+  NzDatePickerModule
 ]
 const exportsDeclarations =[
   NoDataComponent

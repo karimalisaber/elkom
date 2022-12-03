@@ -1,0 +1,5 @@
+@import "settings/colors";
+:host ::ng-deep .ant-table-thead th{
+    background: $main-color;
+    color: #fff;
+}

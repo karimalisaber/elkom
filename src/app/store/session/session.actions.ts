@@ -44,7 +44,7 @@ export const teacherSignup = createAction(
 
 export const teacherSignupSuccess = createAction(
     '[Root/Session] teacher signup Success',
-    props<{ session: Session }>()
+    props<{ user: User }>()
 );
 
 export const teacherSignupFailure = createAction(
@@ -61,7 +61,7 @@ export const studentSignup = createAction(
 
 export const studentSignupSuccess = createAction(
     '[Root/Session] student signup Success',
-    props<{ session: Session }>()
+    props<{ user: User }>()
 );
 
 export const studentSignupFailure = createAction(
@@ -70,27 +70,83 @@ export const studentSignupFailure = createAction(
 );
 
 
-export const SessionExpired = createAction(
-    '[Root/Session] Session Expired'
-)
-
-export const deleteSession = createAction(
-    '[Root/Session] Delete Session',
-    props<{ expired?: boolean }>()
-);
-
-export const deleteSessionSuccess = createAction(
-    '[Root/Session] Delete Session Success',
-    props<{ force: boolean }>()
+export const logout = createAction(
+    '[Root/Session] logout Session'
 );
 
 
-export const deleteSessionFailure = createAction(
-    '[Root/Session] Delete Session Failure',
+
+export const updateEmail = createAction(
+    '[Root/Session] updateEmail',
+    props<{identity: string}>()
+
+);
+
+export const updateEmailSuccess = createAction(
+    '[Root/Session] updateEmail Success',
+    props<{email: string}>()
+
+);
+
+export const updateEmailFailure = createAction(
+    '[Root/Session] updateEmail Failure',
     props<{ error: any }>()
 );
 
-export const updateSession = createAction(
-    '[Root/Session] Update Session',
-    props<{ session: Update<Session> }>()
+
+
+
+export const updateUserName = createAction(
+    '[Root/Session] updateUserName',
+    props<{identity: string}>()
 );
+
+export const updateUserNameSuccess = createAction(
+    '[Root/Session] updateUserName Success',
+    props<{ userName: string}>()
+);
+
+export const updateUserNameFailure = createAction(
+    '[Root/Session] updateUserName Failure',
+    props<{ error: any }>()
+);
+
+
+
+
+export const updateMobile = createAction(
+    '[Root/Session] updateMobile',
+    props<{identity: string}>()
+
+);
+
+export const updateMobileSuccess = createAction(
+    '[Root/Session] updateMobile Success',
+    props<{ mobileNumber: string }>()
+);
+
+export const updateMobileFailure = createAction(
+    '[Root/Session] updateMobile Failure',
+    props<{ error: any }>()
+);
+
+
+
+
+export const updateMainInfo = createAction(
+    '[Root/Session] updateMainInfo',
+    props<{user: User}>()
+);
+
+export const updateMainInfoSuccess = createAction(
+    '[Root/Session] updateMainInfo Success',
+    props<{ user: User }>()
+);
+
+export const updateMainInfoFailure = createAction(
+    '[Root/Session] updateMainInfo Failure',
+    props<{ error: any }>()
+);
+
+
+
