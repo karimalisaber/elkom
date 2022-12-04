@@ -36,7 +36,7 @@ export class QuestionsEffect {
         this.actions$.pipe(
             ofType(actions.loadQuestion),
             // take(1),
-            mergeMap(({ id}) => this.loadOne(id)
+            mergeMap(({ id }) => this.loadOne(id)
                 .pipe(
                     map((response: any) => actions.loadQuestionSuccess({ response })),
                     catchError((error) => of(actions.loadQuestionFailure({ error })))
@@ -45,7 +45,7 @@ export class QuestionsEffect {
         )
     );
 
-    
+
     loadOne(id): Observable<CustomResponse<Question>> {
         const url = BaseUrl + `/questions/get?id=${id}`
         return this.http.get<CustomResponse<Question>>(url)
@@ -66,6 +66,24 @@ export class QuestionsEffect {
         )
     );
 
+
+    answer$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.answerQuestion),
+            // take(1),
+            mergeMap(({ questionId, text }) => this.answer(questionId, text)
+                .pipe(
+                    map((response: any) => actions.answerQuestionSuccess({ response })),
+                    catchError((error) => of(actions.answerQuestionFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    answer(questionId:string, text: string){
+        const url = BaseUrl + '/questions/answers/add'
+        return this.http.post(url,{questionId, text})
+    }
 
 
     uploadQuestionFiles(id: string, file: File) {

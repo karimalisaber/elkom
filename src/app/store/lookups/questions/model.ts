@@ -21,5 +21,5 @@ export interface Answer {
     text: string,
     created: string,
     answerdBy: string,
-    answerdById: string
+    answerdById: string,
 }

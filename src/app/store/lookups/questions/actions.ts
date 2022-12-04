@@ -53,6 +53,22 @@ export const askQuestionFailure = createAction(
     props<{ error: any }>()
 );
 
+export const answerQuestion = createAction(
+    '[Root/Lookups] answerQuestion',
+    props<{ questionId: string, text: string }>()
+
+);
+
+export const answerQuestionSuccess = createAction(
+    'answerQuestion Success',
+    props<{ response: CustomResponse<Question[]> }>()
+);
+
+export const answerQuestionFailure = createAction(
+    '[Root/Lookups] askQuestions Failure',
+    props<{ error: any }>()
+);
+
 
 
 

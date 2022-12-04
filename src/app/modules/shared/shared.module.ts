@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import {  NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserModule } from '@angular/platform-browser';
 
 const importsExports = [
   NzGridModule,
@@ -34,20 +38,27 @@ const importsExports = [
   NzBadgeModule,
   NzTableModule,
   NzDropDownModule,
-  NzDatePickerModule
+  NzDatePickerModule,
+  NgxSpinnerModule,
+
 ]
 const exportsDeclarations =[
-  NoDataComponent
+  NoDataComponent,
+  SpinnerComponent
 
 ]
 @NgModule({
   declarations: [
-    ...exportsDeclarations
+    ...exportsDeclarations,
   ],
   imports: [
     CommonModule,
+    // BrowserModule,
+    // BrowserAnimationsModule,
+
     TranslateModule,
-    ...importsExports
+    ...importsExports,
+
   ],
   exports: [
     ...importsExports,

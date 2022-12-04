@@ -124,7 +124,7 @@ export class SessionEffects {
                 if (res.succeeded) {
                     this.auth.setToken(res.data.token)
                     this.auth.setRefreshToken(res.data.refreshToken)
-                    debugger
+                    
                     return this.getUser()
                 } else {
                     throw (res)

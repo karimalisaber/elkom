@@ -1,6 +1,17 @@
 <app-question-card [question]="question$ | async"></app-question-card>
 
 <ng-container *ngIf="question$ | async as question">
-    <app-question-answer *ngIf="question.answers" [answers]="question.answers"></app-question-answer>
+    <app-question-answer *ngIf="question.answers?.length > 0" [answers]="question.answers"></app-question-answer>
+</ng-container>
 
+
+<ng-container *ngIf="!(hasAnswer$ | async)">
+    <label for="">{{'answer' | translate}}</label>
+    <textarea [(ngModel)]="answerText" class="main-border">
+        
+    </textarea>
+    
+    <button (click)="answerQuestion()" class="main-btn">
+        {{'submit' | translate}}
+    </button>
 </ng-container>

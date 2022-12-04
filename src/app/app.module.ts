@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
 
     StoreModule.forRoot(fromRoot.reducers),
     StoreModule.forFeature(fromLookups.featureKey, fromLookups.reducers, {}),
-
+    NgxSpinnerModule,
     EffectsModule.forRoot(),
     EffectsModule.forFeature([
       ...fromLookups.effects,
