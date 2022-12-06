@@ -20,7 +20,7 @@
         </li>
 
 
-        <li class="list-style-none">
+        <li *ngIf="isLogIn$ | async " class="list-style-none">
 
             <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
                 [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/myquestions">
@@ -40,7 +40,7 @@
         </li>
 
 
-        <li class="list-style-none">
+        <li *ngIf="isLogIn$ | async " class="list-style-none">
 
             <a class="anchor main-text text-capitalize" [routerLinkActive]="'active'"
                 [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard/profile">

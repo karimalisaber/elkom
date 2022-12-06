@@ -1,20 +1,23 @@
+<button (click)="addCertificate()" class="main-border certificate-btn circle">
+  <span class="plus-icon" nz-icon nzType="plus" nzTheme="outline"></span>
+</button>
+<label for="">{{'addCertificate' | translate}}</label>
+
+<div class="mt-20"></div>
 <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
-    <thead>
-      <tr>
-        <th
-          *ngFor="let column of listOfColumns"
-     
-        >
-          {{ column.name }}
-        </th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr *ngFor="let data of filterTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-      </tr>
-    </tbody>
-  </nz-table>
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumns">
+        {{ column.name }}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let data of filterTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+    </tr>
+  </tbody>
+</nz-table>

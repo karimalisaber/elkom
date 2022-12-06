@@ -1,0 +1,33 @@
+<ng-container *ngIf="true">
+    <div class="">
+        <label for="">{{'specialties' | translate}}</label>
+    </div>
+
+
+
+    <div *ngIf = "(filtered$ | async).length > 0"  class="specialties main-border">
+        <button (click)="add(specialty)" *ngFor = "let specialty of filtered$ | async"  class="item main-border">
+            <img class="avatar" width="15" height="15" src="assets/imgs/logo.png" alt="">
+
+            {{specialty.title}}
+        </button>
+
+    </div>
+
+    <div class="added-specialties">
+        <div *ngFor="let specialty of selected$ | async" class="added-specialty light-background">
+            <div class="">
+                <img class="avatar" width="15" height="15" src="assets/imgs/logo.png" alt="">
+                {{specialty.title}}
+            </div>
+        
+            <button (click)="remove(specialty)" class="main-background circle close-btn">
+                <span nz-icon nzType="close" nzTheme="outline"></span>
+
+            </button>
+
+        </div>
+    </div>
+    
+
+</ng-container>

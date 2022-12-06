@@ -64,5 +64,10 @@
   "addSpecialty" : "Add Specialty",
   "viewProfile" : "View Profile",
   "logout": "Logout",
-  "personalInfo" : "Personal Information"
+  "personalInfo" : "Personal Information",
+  "doNotHaveAccount" : "Don't have account?",
+  "signup": "Signup",
+  "addCertificate" : "Add Certificate",
+  "addNewCertificate" : "Add New Certificate",
+  "chooseFile" : "Choose File"
 }

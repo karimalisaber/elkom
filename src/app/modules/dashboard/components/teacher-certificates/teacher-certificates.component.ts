@@ -1,6 +1,9 @@
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { AddCertificateComponent } from '../add-certificate/add-certificate.component';
+import { take } from 'rxjs';
 
 interface DataItem {
   name: string;
@@ -19,7 +22,7 @@ interface ColumnItem {
   styleUrls: ['./teacher-certificates.component.scss']
 })
 export class TeacherCertificatesComponent {
-  constructor(private translate: TranslateService){}
+  constructor(private translate: TranslateService, private modal : NzModalService){}
   listOfColumns: ColumnItem[] = [
     {
       name: this.translate.instant('title'),
@@ -36,25 +39,26 @@ export class TeacherCertificatesComponent {
     }
   ];
   listOfData: DataItem[] = [
-    {
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park'
-    }
+
   ];
+
+
+  addCertificate(){
+      this.modal.create({
+        nzTitle: this.translate.instant("addNewCertificate"),
+        nzContent: AddCertificateComponent, 
+        nzWidth: '30%',
+        nzOkText: this.translate.instant("submit"),
+        nzOkDisabled:  false,
+        nzCancelText: this.translate.instant("cancel"),
+        nzClosable: false,
+        
+      })
+        .afterClose
+        .pipe(take(1))
+        .subscribe((state) => {
+          // do the logic here
+        })
+    
+  }
 }

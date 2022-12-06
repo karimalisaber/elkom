@@ -3,7 +3,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { initialStatus, Status } from '../../status.interface';
 import * as actions from './actions';
-export const featureKey = 'specialties';
+export const featureKey = 'tags';
 
 export interface State extends EntityState<Tag>, Status {
     // additional entities state properties

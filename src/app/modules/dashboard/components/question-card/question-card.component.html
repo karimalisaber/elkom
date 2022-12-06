@@ -1,9 +1,9 @@
 <!--  -->
 <div *ngIf="question"  class="main-wrapper main-container">
     <div class="header d-flex justify-between align-center">
-        <h1 [routerLink]="'/dashboard/questions/'  + question.id">
+        <a class="title" [routerLink]="'/dashboard/questions/'  + question.id">
             {{question.text}}
-        </h1>
+        </a>
 
         <span class="date second-background">
             {{question.created | date}}

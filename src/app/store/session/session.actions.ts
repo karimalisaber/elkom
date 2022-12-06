@@ -75,6 +75,9 @@ export const logout = createAction(
 );
 
 
+export const logoutSuccess = createAction(
+    '[Root/Session] logout Success Session'
+);
 
 export const updateEmail = createAction(
     '[Root/Session] updateEmail',

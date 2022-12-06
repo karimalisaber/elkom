@@ -1,5 +1,5 @@
 import { combineLatest, map } from 'rxjs';
-import { selectRole, selectUser } from './../../../../store/session/session.reducer';
+import { selectRole, selectUser, selectIsLogIN } from './../../../../store/session/session.reducer';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -15,17 +15,12 @@ export class QuestionDetailsComponent implements OnInit {
   id = this.route.snapshot.paramMap.get('id')
   question$ = this.store.pipe(select(SelectLookup().questions.by_id(this.id)))
   answerText;
+  isLogIn$ = this.store.pipe(select(selectIsLogIN))
   hasAnswer$ = combineLatest([this.store.pipe(select(selectUser)), this.question$ ])
     .pipe(map(([user, question])=> question?.answers.some(answer=> answer.answerdById === user.id)))
   constructor(private store: Store<any>, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.question$.subscribe(res=>{
-      console.log(res,'by id')
-    })
-    this.hasAnswer$.subscribe(res=>{
-      console.log(res,'koko')
-    })
     this.dispatcher()
   }
 

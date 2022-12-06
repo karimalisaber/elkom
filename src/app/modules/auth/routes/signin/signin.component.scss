@@ -1,6 +1,6 @@
 img{
     max-width: 80%;
-    max-height: 80%;
+    max-height: 70%;
 }
 
 .main-wrapper{
@@ -12,17 +12,29 @@ img{
     height: 100vh;
     justify-content: center;
     align-items: center;
+
 }
 
+.desc{
+    margin-bottom: 30px;
+}
+
+.item{
+    text-align: start;
+}
 .form-wrapper{
     text-align: center;
     background: #fff;
     border-radius: 1rem; 
     padding: 2rem;
-    height: 80%;
+    height: 70%;
     width: 25%;
 }
 
+.footer{
+    margin-top: 80px;
+    
+}
 
 .user-type{
     color: #00482D;

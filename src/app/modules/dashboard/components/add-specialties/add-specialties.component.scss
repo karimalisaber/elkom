@@ -1,0 +1,49 @@
+
+.specialty-btn{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn{
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+        font-size: .6rem;
+    }
+}
+
+.added-specialties{
+    display: flex;
+    gap: 20px;
+}
+
+.added-specialty{
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4rem 1rem;
+    border-radius: 5px;
+
+}
+
+.specialties {
+    border-radius: 5px;
+    padding: .4rem;
+    margin: 1rem 0;
+    display: flex;
+    gap: 10px;
+
+    .item {
+        border-radius: 5px;
+        padding: .2rem .6rem;
+        display: inline-block;
+
+
+    }
+}

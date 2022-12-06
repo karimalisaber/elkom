@@ -27,7 +27,8 @@ import { UserInfoComponent } from './routes/profile/user-info/user-info.componen
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { QuestionAnswerComponent } from './routes/question-details/question-answer/question-answer.component';
 import { TeacherCertificatesComponent } from './components/teacher-certificates/teacher-certificates.component';
-import { AddSpecialityDialogComponent } from './components/add-speciality-dialog/add-speciality-dialog.component';
+import { AddCertificateComponent } from './components/add-certificate/add-certificate.component';
+import { AddSpecialtiesComponent } from './components/add-specialties/add-specialties.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AddSpecialityDialogComponent } from './components/add-speciality-dialog
     AskQuestionComponent,
     QuestionAnswerComponent,
     TeacherCertificatesComponent,
-    AddSpecialityDialogComponent
+    AddCertificateComponent,
+    AddSpecialtiesComponent
   ],
   imports: [
     CommonModule,

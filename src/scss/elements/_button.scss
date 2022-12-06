@@ -9,6 +9,13 @@ button{
     }
 }
 
+button[disabled]{
+    opacity: .7;
+    &:hover{
+        cursor: not-allowed;
+    }
+}
+
 .main-btn{
     background-color: $main-color;
     border-radius: 7px;

@@ -1,4 +1,3 @@
-import { AddSpecialityDialogComponent } from './../../../components/add-speciality-dialog/add-speciality-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -48,22 +47,5 @@ export class TeacherProfileComponent implements OnInit {
     this.form.get('files')?.setValue(fileList)
   }
 
-
-  addSpecialty(){
-    this.modal.create({
-      nzTitle: this.translate.instant("addSpecialty"),
-      nzContent: AddSpecialityDialogComponent, 
-      nzWidth: '30%',
-      nzOkText: this.translate.instant("submit"),
-      nzOkDisabled:  false,
-      nzCancelText: this.translate.instant("cancel"),
-      nzClosable: false,
-    })
-      .afterClose
-      .pipe(take(1))
-      .subscribe((state) => {
-        // do the logic here
-      })
-  }
 }
 

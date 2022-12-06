@@ -30,7 +30,6 @@ export class TeacherDetailsComponent implements OnInit {
   }
 
   checkChange(e: any, tags: any){
-      console.log(e, tags, 'koko')
   }
 }
 

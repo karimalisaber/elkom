@@ -73,14 +73,18 @@ export class SessionEffects {
     logout$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.logout),
-            tap(() => this.logout())
+            mergeMap(() => this.logout()
+                .pipe(
+                    map(() => actions.logoutSuccess()),
+                ),
+            )
         )
     );
 
     logout() {
         this.auth.logOut()
-    
-        return of()
+
+        return of(true)
     }
 
     addTeacher(user: User) {
@@ -88,7 +92,6 @@ export class SessionEffects {
 
         return this.http.post(url, user).pipe(
             switchMap((res: any) => {
-                // debugger
                 if (res.succeeded) {
                     this.auth.setToken(res.data.authorityToken)
 
@@ -119,12 +122,12 @@ export class SessionEffects {
     login(user: any): Observable<CustomResponse<User>> {
         const url = BaseUrl + '/authentications/SignIn'
         return this.http.post<CustomResponse<Session>>(url, user).pipe(
-        
+
             switchMap((res: any) => {
                 if (res.succeeded) {
                     this.auth.setToken(res.data.token)
                     this.auth.setRefreshToken(res.data.refreshToken)
-                    
+
                     return this.getUser()
                 } else {
                     throw (res)
@@ -153,7 +156,7 @@ export class SessionEffects {
         )
     );
 
-    updateEmail(body: {identity: string}){
+    updateEmail(body: { identity: string }) {
         const url = BaseUrl + '/users/update/email'
 
         return this.http.put(url, body)
@@ -162,7 +165,7 @@ export class SessionEffects {
     updateMobile$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.updateMobile),
-            mergeMap((body ) => this.updateMobile(body)
+            mergeMap((body) => this.updateMobile(body)
                 .pipe(
                     map(
                         (res: any) => actions.updateMobileSuccess({ mobileNumber: body.identity })),
@@ -172,13 +175,13 @@ export class SessionEffects {
         )
     );
 
-    updateMobile(body: {identity: string}){
+    updateMobile(body: { identity: string }) {
         const url = BaseUrl + '/users/update/mobile'
 
         return this.http.put(url, body)
     }
 
-    
+
     updateUserName$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.updateUserName),
@@ -194,7 +197,7 @@ export class SessionEffects {
 
 
 
-    updateUserName(body: {identity: string}){
+    updateUserName(body: { identity: string }) {
         const url = BaseUrl + '/users/update/username'
 
         return this.http.put(url, body)

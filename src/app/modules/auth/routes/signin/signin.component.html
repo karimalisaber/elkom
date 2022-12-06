@@ -14,14 +14,14 @@
             <h1 class="user-type">{{'userType' | translate}}</h1>
         
             <p>{{'_signup_desc1' | translate}}</p>
-            <p>{{'_signup_desc2' | translate}}</p>
+            <p class="desc">{{'_signup_desc2' | translate}}</p>
 
 
             
             <div class="item">
-                <nz-form-label>{{"userName" | translate}}</nz-form-label>
+                <label>{{"userName" | translate}}</label>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+                    <nz-form-control   nzHasFeedback>
                         <input nz-input  [placeholder]="'userName' | translate" nzSize="large"
                             formControlName="username" />
                     </nz-form-control>
@@ -29,10 +29,10 @@
             </div>
            
             <div class="item">
-                <nz-form-label>{{"password" | translate}}</nz-form-label>
+                <label>{{"password" | translate}}</label>
 
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="'karim'"  nzHasFeedback>
+                    <nz-form-control   nzHasFeedback>
                         <input nz-input type="password" [placeholder]="'password' | translate" nzSize="large"
                             formControlName="password" />
                     </nz-form-control>
@@ -45,6 +45,12 @@
                 {{ "signin" | translate }}
             </button>
         </form>
+
+        <div class="footer">
+            <p>{{'doNotHaveAccount' | translate}}
+                <a routerLink="/auth/signup"> {{'signup' | translate}}</a>
+            </p>
+        </div>
     </div>
 
  

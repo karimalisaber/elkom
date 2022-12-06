@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <form [formGroup]="form">
+        <div class="item-wrapper w-100" nz-col nzSpan="8">
+            <label>{{"title" | translate}}</label>
+
+            <nz-form-item>
+                <nz-form-control class="w-100" nzErrorTip="'title'" nzHasFeedback>
+                    <input nz-input [placeholder]="'title' | translate" nzSize="large" formControlName="title" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div class="item-wrapper">
+            <app-add-specialties (change)="onSpecialtyChange($event)"></app-add-specialties>
+
+        </div>
+
+
+        <div class="item-wrapper form-wrapper">
+            <label>{{"description" | translate}}</label>
+            <nz-form-control class="w-100">
+                <textarea rows="4" formControlName="description" nz-input
+                    [placeholder]="'description' | translate"></textarea>
+            </nz-form-control>
+        </div>
+
+        <div class="item-wrapper">
+            <nz-upload [nzDisabled]="fileList.length  > 0" (nzRemove)="change($event)" [nzMultiple]="false"
+                [nzLimit]="1" [(nzFileList)]="fileList">
+                <button nz-button>
+                    <span nz-icon nzType="upload"></span>
+                    {{'chooseFile' | translate}}
+                </button>
+            </nz-upload>
+        </div>
+    </form>
+</div>

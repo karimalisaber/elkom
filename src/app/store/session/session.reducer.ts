@@ -38,7 +38,7 @@ export const reducer = createReducer(
         
         return { ...state, user: state, session:{...state.session, user}, loading: false, loaded: true }
     }),
-    on(actions.logout, (state, { }) => initialState),
+    on(actions.logoutSuccess, (state, { }) => initialState),
     on(actions.teacherSignupSuccess, (state, { user }) => {
         return { ...state, session:{...state.session, user}, loading: false, loaded: true }
     }),
@@ -52,3 +52,4 @@ export const selectSession = (state: State) => state.session;
 const selector = createFeatureSelector(featureKey)
 export const selectRole =  createSelector(selector, (state)=> state['session']?.user?.role)
 export const selectUser =  createSelector(selector, (state)=> state['session']?.user)
+export const selectIsLogIN =  createSelector(selector, (state)=> !!state['session']?.user?.username)
