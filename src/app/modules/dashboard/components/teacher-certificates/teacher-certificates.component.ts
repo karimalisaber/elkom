@@ -1,9 +1,11 @@
+import { selectUser } from './../../../../store/session/session.reducer';
+import { Store, select } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { AddCertificateComponent } from '../add-certificate/add-certificate.component';
-import { take } from 'rxjs';
+import { take, map } from 'rxjs';
 
 interface DataItem {
   name: string;
@@ -22,7 +24,14 @@ interface ColumnItem {
   styleUrls: ['./teacher-certificates.component.scss']
 })
 export class TeacherCertificatesComponent {
-  constructor(private translate: TranslateService, private modal : NzModalService){}
+  attachments$ = this.store.pipe(select(selectUser),map(res=> res.teacherDetails?.attachments))
+
+  constructor(private translate: TranslateService, private modal : NzModalService, private store: Store<any>){
+    this.attachments$.subscribe(res=>{
+      console.log(res, 'koko')
+    })
+  }
+  
   listOfColumns: ColumnItem[] = [
     {
       name: this.translate.instant('title'),
@@ -38,6 +47,7 @@ export class TeacherCertificatesComponent {
       name: this.translate.instant('file'),
     }
   ];
+  
   listOfData: DataItem[] = [
 
   ];
@@ -48,9 +58,9 @@ export class TeacherCertificatesComponent {
         nzTitle: this.translate.instant("addNewCertificate"),
         nzContent: AddCertificateComponent, 
         nzWidth: '30%',
-        nzOkText: this.translate.instant("submit"),
+        nzOkText: null,
         nzOkDisabled:  false,
-        nzCancelText: this.translate.instant("cancel"),
+        nzCancelText: null,
         nzClosable: false,
         
       })

@@ -1,5 +1,7 @@
+import { addCertificate } from './../../../../store/session/session.actions';
+import { Store } from '@ngrx/store';
 import { Specialty } from './../../../../store/lookups/specialities/model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 
@@ -10,26 +12,39 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 })
 export class AddCertificateComponent implements OnInit {
   form = this.fb.group({
-    title:[],
-    description: [],
-    specialties: []
+    Title:[null, Validators.required],
+    Description: [null, Validators.required],
+    SpecialtyId: ['', Validators.required]
   })
 
+  formData = this
+
   fileList: NzUploadFile[] = []
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store<any>) { }
 
   ngOnInit(): void {
   }
 
   add(){
+    let file = new FormData();
+    // body.append('files', file)
+    file.append('file' , this.fileList[0]?.originFileObj)
+    // body.append('SpecialtyId', )
+    // body.append('Title', this.form.value.Title)
+    // body.append('Description', this.form.value.Description)
     
+  
+    this.store.dispatch(addCertificate({file, SpecialtyId: this.form.value.SpecialtyId, Title : this.form.value.Title, Description: this.form.value.Description}))
   }
 
   change(e){
     console.log(e)
   }
 
-  onSpecialtyChange(specialties: Array<Specialty>){
-    this.form.get('specialties').setValue(specialties)
-  } 
+  onSpecialtyChange(specialties: Specialty){
+    this.form.get('SpecialtyId').setValue(specialties.id)
+    
+
+  }
+
 }

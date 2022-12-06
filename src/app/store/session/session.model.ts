@@ -1,3 +1,4 @@
+import { Specialty } from './../lookups/specialities/model';
 import { Grade } from './../lookups/grades/model';
 export interface Session {
     user: User | null,
@@ -33,9 +34,17 @@ export interface TeacherDetails {
     mobileNumber: {
         number: string
     },
+    attachments?: TeacherAttachment[],
     gender: 1 | 2,
     tags: string[],
     specialties: string[],
-    attachments: string
+}
+
+export interface TeacherAttachment{
+    title: string, 
+    description : string,
+    file: string,
+    specialtity: Specialty,
+    id: string
 
 }

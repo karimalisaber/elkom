@@ -1,3 +1,5 @@
+import { loadMyQuestions } from './../../../../store/lookups/myquestions/actions';
+import { ActivatedRoute } from '@angular/router';
 import { SelectLookup } from 'src/app/store/lookups';
 import { loadQuestions } from './../../../../store/lookups/questions/actions';
 import { Component, OnInit } from '@angular/core';
@@ -5,10 +7,11 @@ import { Actions } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { take, map } from 'rxjs';
+import { take, map, Observable } from 'rxjs';
 import { AskQuestionComponent } from '../../components/ask-question/ask-question.component';
 import { loadTags } from './../../../../store/lookups/tags/actions';
 import { selectRole } from 'src/app/store/session/session.reducer';
+import { Question } from 'src/app/store/lookups/questions/model';
 
 @Component({
   selector: 'app-questions',
@@ -16,28 +19,37 @@ import { selectRole } from 'src/app/store/session/session.reducer';
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
-  questions$ = this.store.pipe(select(SelectLookup().questions.all))
+  questions$ : Observable<Question[]>;
   isLoaded$ = this.store.pipe(select(SelectLookup().questions.loaded))
- role$ = this.store.pipe(select(selectRole))
+  role$ = this.store.pipe(select(selectRole))
+  isMyQuestions = this.route.snapshot.data['my']
 
   constructor(
     private modal: NzModalService,
     private translateService: TranslateService,
     private store: Store<any>,
-    private actions: Actions
-  ) { }
+    private actions: Actions,
+    private route: ActivatedRoute
+  ) { 
+    if(this.isMyQuestions){
+      this.questions$ = this.store.pipe(select(SelectLookup().myQuestions.all));
+    }else{
+      this.questions$ = this.store.pipe(select(SelectLookup().questions.all));
+
+    }
+  }
 
   ngOnInit(): void {
     this.dispatcher()
- 
-    this.role$.subscribe(res=>{
-      console.log(res)
-    })
+
+
   }
 
   dispatcher(){
     this.store.dispatch(loadTags()) // inside child
+  
     this.store.dispatch(loadQuestions())
+    this.store.dispatch(loadMyQuestions())
   }
 
   openAskQuestionModal() {
@@ -48,7 +60,7 @@ export class QuestionsComponent implements OnInit {
       nzOkText: this.translateService.instant("submit"),
       nzOkDisabled:  false,
       nzCancelText: this.translateService.instant("cancel"),
-      nzClosable: false,
+      nzClosable: false
     })
       .afterClose
       .pipe(take(1))

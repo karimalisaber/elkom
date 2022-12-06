@@ -87,6 +87,54 @@ export class SessionEffects {
         return of(true)
     }
 
+
+    addCertificate$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.addCertificate),
+            mergeMap(({ file, SpecialtyId, Title, Description }) => this.addCertificate(file, SpecialtyId, Title, Description)
+                .pipe(
+                    map(
+                        (res: any) => actions.addCertificateSuccess({ response: res.data })),
+                    catchError((error) => of(actions.addCertificateFailure({ error })))
+                ),
+            )
+        )
+    );
+    addCertificate(file, SpecialtyId, Title, Description) {
+        const url = BaseUrl + `/users/teachers/achievements/add?SpecialtyId=${SpecialtyId}&&Title=${Title}&&Description=${Description}`
+        return this.http.put<CustomResponse<any>>(url, file)
+
+    }
+
+
+    addSpecialty$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.addSpecialty),
+            mergeMap(({ specialtyId }) => this.addSpecialty(specialtyId)
+                .pipe(
+                    map(
+                        (res: any) => actions.addSpecialtySuccess({ response: res.data })),
+                    catchError((error) => of(actions.addSpecialtyFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    addSpecialty(specialtyId: string) {
+        const url = BaseUrl + `/users/teachers/specialty/add?SpecialtyId=${specialtyId}`
+        return this.http.put<CustomResponse<string>>(url, {})
+    }
+
+
+
+    
+
+    
+
+
+
+
+
     addTeacher(user: User) {
         const url = BaseUrl + '/users/signup/teacher'
 
@@ -102,6 +150,8 @@ export class SessionEffects {
             })
         )
     }
+
+
 
     addStudent(user: User) {
         const url = BaseUrl + '/users/signup/student'

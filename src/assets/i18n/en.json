@@ -69,5 +69,6 @@
   "signup": "Signup",
   "addCertificate" : "Add Certificate",
   "addNewCertificate" : "Add New Certificate",
-  "chooseFile" : "Choose File"
+  "chooseFile" : "Choose File",
+  "update" : "Update"
 }

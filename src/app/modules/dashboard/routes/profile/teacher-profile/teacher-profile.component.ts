@@ -1,3 +1,6 @@
+import { addSpecialty } from './../../../../../store/session/session.actions';
+import { Store } from '@ngrx/store';
+import { Specialty } from './../../../../../store/lookups/specialities/model';
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -21,6 +24,7 @@ export class TeacherProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private store: Store<any>,
     private modal: NzModalService,
     private translate: TranslateService
 
@@ -43,9 +47,15 @@ export class TeacherProfileComponent implements OnInit {
     this.previewImage = file.url || file['preview'];
     this.previewVisible = true;
   };
+
   onUploadChange({ file, fileList }: NzUploadChangeParam): void {
     this.form.get('files')?.setValue(fileList)
   }
 
+  addSpecialty(specialty: Specialty){
+    console.log(specialty)
+    this.store.dispatch(addSpecialty({specialtyId: specialty.id}))
+    
+  }
 }
 

@@ -16,6 +16,7 @@ import * as fromSpecialties from './specialities/reducer';
 import * as fromGrades from './grades/reducer';
 import * as fromTags from './tags/reducer';
 import * as fromQuestions from './questions/reducer';
+import * as fromMyQuestions from './myquestions/reducer';
 import * as fromTeachers from './teachers/reducer';
 import * as fromSubjects from './subjects/reducer';
 import * as fromPrograms from './programs/reducer';
@@ -23,6 +24,7 @@ import * as fromLectures from './lectures/reducer';
 import { GradesEffect } from './grades/effects';
 import { QuestionsEffect } from './questions/effects';
 import { SubjectsEffect } from './subjects/effects';
+import { MyQuestionsEffect } from './myquestions/effects';
 export const featureKey = 'lookups';
 
 export interface State {
@@ -34,6 +36,7 @@ export interface State {
     [fromPrograms.featureKey]: fromPrograms.State;
     [fromLectures.featureKey]: fromLectures.State;
     [fromTeachers.featureKey]: fromTeachers.State;
+    [fromMyQuestions.featureKey]: fromMyQuestions.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -45,6 +48,7 @@ export const reducers: ActionReducerMap<State> = {
     [fromPrograms.featureKey]: fromPrograms.reducer,
     [fromLectures.featureKey]: fromLectures.reducer,
     [fromTeachers.featureKey]: fromTeachers.reducer,
+    [fromMyQuestions.featureKey]: fromMyQuestions.reducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
@@ -59,6 +63,7 @@ const selectTeachersFeature = createSelector(selectFeature, (state) => state[fro
 const selectSubjectsFeature = createSelector(selectFeature, (state) => state[fromSubjects.featureKey]);
 const selectProgramsFeature = createSelector(selectFeature, (state) => state[fromPrograms.featureKey]);
 const selectLecturesFeature = createSelector(selectFeature, (state) => state[fromLectures.featureKey]);
+const selectMyQuestionsFeature = createSelector(selectFeature, (state) => state[fromMyQuestions.featureKey]);
 
 
 export const effects =[
@@ -69,7 +74,8 @@ export const effects =[
     SubjectsEffect,
     ProgramsEffect,
     LecturesEffect,
-    TeachersEffect
+    TeachersEffect,
+    MyQuestionsEffect
 ]
 
 
@@ -91,10 +97,17 @@ export function SelectLookup(){
             all: createSelector(selectSubjectsFeature, fromSubjects.selectAll),
             status: createSelector(selectSubjectsFeature, (state) => selectStatus(state))
         },
+        
+        myQuestions :{
+            all: createSelector(selectMyQuestionsFeature, fromMyQuestions.selectAll),
+            by_id: (id) => createSelector(selectMyQuestionsFeature, fromMyQuestions.selectById(id)),
+            status: createSelector(selectMyQuestionsFeature, (state) => selectStatus(state)),
+            loaded: createSelector(selectMyQuestionsFeature, (state) => selectStatus(state).loaded),
+        },
+
         questions :{
             all: createSelector(selectQuestionsFeature, fromQuestions.selectAll),
             by_id: (id) => createSelector(selectQuestionsFeature, fromQuestions.selectById(id)),
-
             status: createSelector(selectQuestionsFeature, (state) => selectStatus(state)),
             loaded: createSelector(selectQuestionsFeature, (state) => selectStatus(state).loaded),
         },

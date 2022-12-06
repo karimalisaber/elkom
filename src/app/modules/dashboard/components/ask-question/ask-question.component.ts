@@ -27,6 +27,10 @@ export class AskQuestionComponent implements OnInit {
     files: []
   })
 
+  fileList: NzUploadFile[] = [];
+  previewImage: string | undefined = '';
+  previewVisible = false;
+  
   constructor(
     private fb: FormBuilder,
     private modalRef: NzModalRef<AskQuestionComponent>,
@@ -93,14 +97,11 @@ export class AskQuestionComponent implements OnInit {
 
     this.actions.pipe(ofType(askQuestionSuccess),take(1)).subscribe(res=>{
       this.modalRef.close();
-      console.log(res.type)
       this.toastr.success(res.type)
     })
   }
 
-  fileList: NzUploadFile[] = [];
-  previewImage: string | undefined = '';
-  previewVisible = false;
+
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file['preview']) {

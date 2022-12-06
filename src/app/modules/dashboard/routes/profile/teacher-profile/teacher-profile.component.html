@@ -5,7 +5,7 @@
 
 
     
-    <app-add-specialties></app-add-specialties>
+    <app-add-specialties (change)="addSpecialty($event)"></app-add-specialties>
 
     <ng-container *ngIf="true">
         <h1 class="title">
@@ -15,7 +15,6 @@
 
 
         <app-teacher-certificates></app-teacher-certificates>
-
     </ng-container>
 
 </ng-container>

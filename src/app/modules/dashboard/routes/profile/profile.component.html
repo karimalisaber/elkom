@@ -1,4 +1,12 @@
 <div *ngIf="user$ | async as user" class="profile-wrapper main-container">
+    
+    <button class="profile-picture" (click)="file.click()">
+       <div class="hover">{{'update' | translate}}</div>
+        <img class="" width="80" height="80" src="assets/imgs/icons/login-user.svg" alt="">
+
+        <input (change)="onUploadProfileImg($event.target['files'])" type="file" class="file" #file>
+    </button>
+
     <app-user-info  [user]="user"></app-user-info>
 
     <app-student-profile *ngIf="user.role === 2" [user]="user"></app-student-profile>

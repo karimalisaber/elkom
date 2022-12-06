@@ -4,7 +4,7 @@
 <label for="">{{'addCertificate' | translate}}</label>
 
 <div class="mt-20"></div>
-<nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+<nz-table #table [nzData]="attachments$ | async" nzTableLayout="fixed">
   <thead>
     <tr>
       <th *ngFor="let column of listOfColumns">
@@ -14,10 +14,11 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let data of filterTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
+    <tr *ngFor="let data of table.data">
+      <td>{{ data.title }}</td>
+      <td>{{ data.specialtity?.title }}</td>
+      <td>{{ data.description }}</td>
+      <td><img [src]="data.file" alt="" class="circle" width="40px" height="40px"></td>
     </tr>
   </tbody>
 </nz-table>

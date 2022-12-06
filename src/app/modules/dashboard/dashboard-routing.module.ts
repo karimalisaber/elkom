@@ -16,14 +16,20 @@ const routes: Routes = [
       },
       {
         
-        path: 'questions', component: QuestionsComponent
+        path: 'questions', component: QuestionsComponent,
+        data: {
+          my: false
+        }
       },
       {
         path: 'questions/:id', component: QuestionDetailsComponent
       },
 
       {
-        path: 'myquestions', component: QuestionsComponent
+        path: 'myquestions', component: QuestionsComponent,
+        data: {
+          my: true
+        }
       },
       {
         path: 'teachers', component: TeachersComponent

@@ -1,3 +1,4 @@
+import { Specialty } from './../lookups/specialities/model';
 import { CustomResponse } from './../store.interface';
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
@@ -150,6 +151,65 @@ export const updateMainInfoFailure = createAction(
     '[Root/Session] updateMainInfo Failure',
     props<{ error: any }>()
 );
+
+
+
+export const addCertificate = createAction(
+    '[Root/Session] addCertificate',
+    props<{ file: FormData, SpecialtyId: string, Title: string, Description: string }>()
+
+);
+
+export const addCertificateSuccess = createAction(
+    '[Root/Session] addCertificate Success',
+    props<{ response: CustomResponse<any> }>()
+);
+
+export const addCertificateFailure = createAction(
+    '[Root/Session] addCertificate Failure',
+    props<{ error: any }>()
+);
+
+
+
+
+
+
+export const addSpecialty = createAction(
+    '[Root/Session] addSpecialty',
+    props<{ specialtyId: string }>()
+
+);
+
+export const addSpecialtySuccess = createAction(
+    '[Root/Session] addSpecialty Success',
+    props<{ response: CustomResponse<Specialty> }>()
+);
+
+export const addSpecialtyFailure = createAction(
+    '[Root/Session] addSpecialty Failure',
+    props<{ error: any }>()
+);
+
+
+export const removeSpecialty = createAction(
+    '[Root/Session] removeSpecialty',
+    props<{ file: FormData }>()
+);
+
+export const removeSpecialtySuccess = createAction(
+    '[Root/Session] removeSpecialty Success',
+    props<{ response: CustomResponse<string> }>()
+);
+
+export const removeSpecialtyFailure = createAction(
+    '[Root/Session] removeSpecialty Failure',
+    props<{ error: any }>()
+);
+
+
+
+
 
 
 
