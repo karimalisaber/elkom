@@ -126,7 +126,7 @@ export const updateMobile = createAction(
 
 export const updateMobileSuccess = createAction(
     '[Root/Session] updateMobile Success',
-    props<{ mobileNumber: string }>()
+    props<{ mobileNumber: {number: string} }>()
 );
 
 export const updateMobileFailure = createAction(
@@ -204,6 +204,23 @@ export const removeSpecialtySuccess = createAction(
 
 export const removeSpecialtyFailure = createAction(
     '[Root/Session] removeSpecialty Failure',
+    props<{ error: any }>()
+);
+
+
+
+export const updatePersonalInformation = createAction(
+    '[Root/Session] updatePersonalInformation',
+    props<{ fullName: string, birthDate : Date, gender: 1 | 2 }>()
+);
+
+export const updatePersonalInformationSuccess = createAction(
+    '[Root/Session] updatePersonalInformation Success',
+    props<{ fullName: string, birthDate : Date, gender: 1 | 2 }>()
+);
+
+export const updatePersonalInformationFailure = createAction(
+    '[Root/Session] updatePersonalInformation Failure',
     props<{ error: any }>()
 );
 

@@ -27,7 +27,7 @@
             </nz-form-control>
         </nz-form-item>
 
-        <button (click)="updateEmail()" class="main-btn">{{'save' | translate}}</button>
+        <button (click)="updateUserName()" class="main-btn">{{'save' | translate}}</button>
 
     </div>
 
@@ -41,7 +41,7 @@
             </nz-form-control>
         </nz-form-item>
 
-        <button class="main-btn">{{'save' | translate}}</button>
+        <button (click)="updateMobile()" class="main-btn">{{'save' | translate}}</button>
     </div>
 
     <h1 class="title"  nz-col nzSpan="24">
@@ -56,9 +56,6 @@
                 <input nz-input [placeholder]="'fullName' | translate" nzSize="large" formControlName="fullName" />
             </nz-form-control>
         </nz-form-item>
-
-        <button class="main-btn">{{'save' | translate}}</button>
-
     </div>
 
 
@@ -88,6 +85,11 @@
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
+    </div>
+
+    <div nz-col nzSpan="24">
+        <button [disabled]="form.get('fullName').invalid || form.get('birthDate').invalid || form.get('gender').invalid" (click)="updatePersonalInfo()" class="main-btn mt-0">{{'save' | translate}}</button>
+
     </div>
 
 </form>

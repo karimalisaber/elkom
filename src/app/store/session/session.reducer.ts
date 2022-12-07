@@ -44,6 +44,21 @@ export const reducer = createReducer(
     }),
 
 
+    on(actions.updatePersonalInformationSuccess, (state, { fullName, birthDate, gender }) => {
+        return { ...state, user: state, session:{...state.session, user: {...user, fullName, birthDate, gender}}, loading: false, loaded: true }
+    }),
+
+    on(actions.updateEmailSuccess, (state, { email }) => {
+        return { ...state, user: state, session:{...state.session, user: {...user, email}}, loading: false, loaded: true }
+    }),
+
+    on(actions.updateUserNameSuccess, (state, { userName }) => {
+        return { ...state, user: state, session:{...state.session, user: {...user, userName}}, loading: false, loaded: true }
+    }),
+
+    on(actions.updateMobileSuccess, (state, { mobileNumber }) => {
+        return { ...state, user: state, session:{...state.session, user: {...user, mobileNumber}}, loading: false, loaded: true }
+    }),
 
 
 );

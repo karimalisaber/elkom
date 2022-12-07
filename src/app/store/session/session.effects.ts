@@ -196,63 +196,81 @@ export class SessionEffects {
     updateEmail$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.updateEmail),
-            mergeMap((body) => this.updateEmail(body)
+            mergeMap(({identity}) => this.updateEmail(identity)
                 .pipe(
                     map(
-                        (res: any) => actions.updateEmailSuccess({ email: body.identity })),
+                        (res: any) => actions.updateEmailSuccess({ email: identity })),
                     catchError((error) => of(actions.updateEmailFailure({ error })))
                 ),
             )
         )
     );
 
-    updateEmail(body: { identity: string }) {
-        const url = BaseUrl + '/users/update/email'
+    updateEmail(identity: string ) {
+        const url = BaseUrl + '/users/profile/update/email'
 
-        return this.http.put(url, body)
-    }
-
-    updateMobile$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(actions.updateMobile),
-            mergeMap((body) => this.updateMobile(body)
-                .pipe(
-                    map(
-                        (res: any) => actions.updateMobileSuccess({ mobileNumber: body.identity })),
-                    catchError((error) => of(actions.updateMobileFailure({ error })))
-                ),
-            )
-        )
-    );
-
-    updateMobile(body: { identity: string }) {
-        const url = BaseUrl + '/users/update/mobile'
-
-        return this.http.put(url, body)
+        return this.http.put(url, {identity})
     }
 
 
+    
     updateUserName$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.updateUserName),
-            mergeMap((body) => this.updateUserName(body)
+            mergeMap(({identity}) => this.updateUserName(identity)
                 .pipe(
                     map(
-                        (res: any) => actions.updateUserNameSuccess({ userName: body.identity })),
+                        (res: any) => actions.updateUserNameSuccess({ userName: identity })),
                     catchError((error) => of(actions.updateUserNameFailure({ error })))
                 ),
             )
         )
     );
 
-
-
-    updateUserName(body: { identity: string }) {
-        const url = BaseUrl + '/users/update/username'
-
-        return this.http.put(url, body)
+    updateUserName(identity: string ) {
+        const url = BaseUrl + '/users/profile/update/username'
+        return this.http.put(url, {identity})
     }
 
+
+    
+    updatePersonalInformation$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.updatePersonalInformation),
+            mergeMap(({fullName, birthDate, gender}) => this.updatePersonalInformation(fullName, birthDate, gender)
+                .pipe(
+                    map(
+                        (res: any) => actions.updatePersonalInformationSuccess( {fullName, birthDate, gender})),
+                    catchError((error) => of(actions.updatePersonalInformationFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    updatePersonalInformation(fullName, birthDate, gender) {
+        const url = BaseUrl + '/users/profile/update/personal-information'
+
+        return this.http.put(url, {fullName, birthDate, gender})
+    }
+
+    updateMobile$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.updateMobile),
+            mergeMap(({identity}) => this.updateMobile(identity)
+                .pipe(
+                    map(
+                        (res: any) => actions.updateMobileSuccess({ mobileNumber: {number : identity} })),
+                    catchError((error) => of(actions.updateMobileFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    updateMobile(identity) {
+        const url = BaseUrl + '/users/profile/update/mobile'
+
+        return this.http.put(url, {identity})
+    }
 
 
 
