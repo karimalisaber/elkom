@@ -49,7 +49,11 @@ export class QuestionsComponent implements OnInit {
     this.store.dispatch(loadTags()) // inside child
   
     this.store.dispatch(loadQuestions())
-    this.store.dispatch(loadMyQuestions())
+
+    this.role$.subscribe(role=>{
+      this.store.dispatch(loadMyQuestions({role}))
+
+    })
   }
 
   openAskQuestionModal() {

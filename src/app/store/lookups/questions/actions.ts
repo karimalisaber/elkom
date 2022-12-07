@@ -72,3 +72,35 @@ export const answerQuestionFailure = createAction(
 
 
 
+
+export const editQuestion = createAction(
+    '[Root/Lookups] editQuestion',
+    props<{ payload: Partial<Question> }>()
+
+);
+
+export const editQuestionSuccess = createAction(
+    'editQuestion Success',
+    props<{ response: CustomResponse<Question[]> }>()
+);
+
+export const editQuestionFailure = createAction(
+    '[Root/Lookups] editQuestions Failure',
+    props<{ error: any }>()
+);
+
+
+export const voteQuestion = createAction(
+    '[Root/Lookups] vote',
+    props<{ voteType: 1 | 2, id: string }>()
+);
+
+export const voteQuestionSuccess = createAction(
+    'vote Success',
+    props<{ voteType: 1 | 2, id: string }>()
+);
+
+export const voteQuestionFailure = createAction(
+    '[Root/Lookups] votes Failure',
+    props<{ error: any }>()
+);

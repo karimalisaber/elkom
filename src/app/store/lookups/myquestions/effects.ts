@@ -16,7 +16,7 @@ export class MyQuestionsEffect {
         this.actions$.pipe(
             ofType(actions.loadMyQuestions),
             // take(1),
-            mergeMap(({ }) => this.loadAll()
+            mergeMap(({role }) => this.loadAll(role)
                 .pipe(
                     map((response: any) => actions.loadMyQuestionsSuccess({ response })),
                     catchError((error) => of(actions.loadMyQuestionsFailure({ error })))
@@ -25,8 +25,15 @@ export class MyQuestionsEffect {
         )
     );
 
-    loadAll(): Observable<CustomResponse<Question[]>> {
-        const url = BaseUrl + '/questions/list/answeredBy'
+    loadAll(role: 1 | 2): Observable<CustomResponse<Question[]>> {
+        var url;
+        if(role == 1){
+            url = BaseUrl + '/questions/list/answeredBy'
+
+        }else{
+            url = BaseUrl + '/questions/list/askedBy'
+        }
+
         return this.http.get<CustomResponse<Question[]>>(url)
     }
 

@@ -20,6 +20,7 @@ export class StudentSignupComponent implements OnInit {
 
   form = this.fb.group({
     fullName: ['karim saber', [Validators.required]],
+    username: ['karim saber', [Validators.required]],
     gradeId: ['', [Validators.required]],
     email: ['karim@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     mobileNumber: ['01097628565', [Validators.required, Validators.pattern(/^[+()\d-]+$/)]],
@@ -43,7 +44,7 @@ export class StudentSignupComponent implements OnInit {
   signup() {
     const user: User = {
       password: this.form.value.password,
-      username: this.form.value.email,
+      username: this.form.value.username,
       fullName: this.form.value.fullName,
       email: this.form.value.email,
       mobileNumber: {

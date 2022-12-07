@@ -3,7 +3,9 @@ import { Question } from './model';
 import {CustomResponse} from 'src/app/store/store.interface'
 
 export const loadMyQuestions = createAction(
-    '[Root/Lookups] loadMyQuestions'
+    '[Root/Lookups] loadMyQuestions',
+    props<{ role: 1 | 2}>()
+
 );
 
 export const loadMyQuestionsSuccess = createAction(

@@ -67,6 +67,55 @@ export class QuestionsEffect {
     );
 
 
+    editQuestion$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.editQuestion),
+            // take(1),
+            mergeMap(({ payload }) => this.editQuestion(payload)
+                .pipe(
+                    map((response: any) => actions.editQuestionSuccess({ response })),
+                    catchError((error) => of(actions.editQuestionFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    editQuestion(payload) {
+        const url = BaseUrl + '/questions/update'
+
+        let requestBody = {
+            text: payload.text || undefined,
+            tags: payload.tags || undefined,
+            description: payload.description ? payload.description.replace(/\n/g, '<br>') : undefined
+        }
+
+        return this.http.post(url, requestBody).pipe(map((response: any) => response?.data ?? null))
+    }
+
+
+
+    vote$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.voteQuestion),
+            // take(1),
+            mergeMap(({ voteType }) => this.vote(voteType)
+                .pipe(
+                    map((response: any) => actions.voteQuestionSuccess({ voteType ,id:'' })),
+                    catchError((error) => of(actions.voteQuestionFailure({ error })))
+                ),
+            )
+        )
+    );
+
+    vote(voteType) {
+        const url = BaseUrl + '/questions/update'
+
+
+        return this.http.post(url, voteType).pipe(map((response: any) => response?.data ?? null))
+    }
+
+
+
     answer$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.answerQuestion),
@@ -80,9 +129,9 @@ export class QuestionsEffect {
         )
     );
 
-    answer(questionId:string, text: string){
+    answer(questionId: string, text: string) {
         const url = BaseUrl + '/questions/answers/add'
-        return this.http.post(url,{questionId, text})
+        return this.http.post(url, { questionId, text })
     }
 
 

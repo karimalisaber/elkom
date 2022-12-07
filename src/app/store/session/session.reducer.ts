@@ -39,8 +39,8 @@ export const reducer = createReducer(
         return { ...state, user: state, session:{...state.session, user}, loading: false, loaded: true }
     }),
     on(actions.logoutSuccess, (state, { }) => initialState),
-    on(actions.teacherSignupSuccess, (state, { user }) => {
-        return { ...state, session:{...state.session, user}, loading: false, loaded: true }
+    on(actions.teacherSignupSuccess, (state, {user}) => {
+        return { ...state, session:{...state.session, user: null}, loading: false, loaded: true }
     }),
 
 

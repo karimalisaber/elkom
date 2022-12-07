@@ -70,5 +70,6 @@
   "addCertificate" : "Add Certificate",
   "addNewCertificate" : "Add New Certificate",
   "chooseFile" : "Choose File",
-  "update" : "Update"
+  "update" : "Update",
+  "editQuestion" : "Edit Question"
 }

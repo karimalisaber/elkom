@@ -18,7 +18,9 @@ export class QuestionDetailsComponent implements OnInit {
   isLogIn$ = this.store.pipe(select(selectIsLogIN))
   hasAnswer$ = combineLatest([this.store.pipe(select(selectUser)), this.question$ ])
     .pipe(map(([user, question])=> question?.answers.some(answer=> answer.answerdById === user.id)))
-  constructor(private store: Store<any>, private route: ActivatedRoute) { }
+  
+    role$ = this.store.pipe(select(selectRole))
+    constructor(private store: Store<any>, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dispatcher()

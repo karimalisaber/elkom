@@ -5,7 +5,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="!(hasAnswer$ | async) && (isLogIn$ | async)">
+<ng-container *ngIf="!(hasAnswer$ | async) && (isLogIn$ | async) && (role$ | async ) === 1">
     <label for="">{{'answer' | translate}}</label>
     <textarea [(ngModel)]="answerText" class="main-border">
         

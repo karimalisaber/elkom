@@ -12,6 +12,16 @@
         </div>
 
         <div nz-row nzGutter="40" nzLayout="vertical" nz-form [formGroup]="form" (submit)="signup()">
+            <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <label>{{"userName" | translate}}</label>
+                    <nz-form-control class="w-full" nzHasFeedback>
+                        <input nz-input type="text" placeholder="{{ 'userName' | translate }}" nzSize="large"
+                            formControlName="username" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            
 
             <div nz-col nzSpan="12">
                 <nz-form-item>

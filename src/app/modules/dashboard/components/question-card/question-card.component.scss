@@ -1,16 +1,33 @@
-.main-wrapper{
+.main-wrapper {
     margin-bottom: 2rem;
 }
 
-.title{
+.title {
     color: #000;
     margin: 0;
+}
+
+.date-vote-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .item {
+        font-size: .7rem;
+        padding: .5rem .2rem;
+        font-size: .9rem;
+
+        &.vote {
+            border-radius: 14px;
+            padding: .1rem .7rem;
+        }
+    }
 }
 
 .footer {
     display: flex;
     gap: .7rem;
     align-items: center;
+
     .item {
         font-size: .7rem;
 
@@ -22,23 +39,25 @@
 
 }
 
-.date{
+.date {
     border-radius: .2rem;
     padding: .1rem .2rem;
     font-size: .9rem;
 }
 
-nz-divider{
+nz-divider {
     margin: .5rem 0;
 }
-.edit-wrapper{
+
+.edit-wrapper {
     width: 25px;
     height: 25px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
 }
-.answer{
+
+.answer {
     color: #6C64DD;
     border-radius: 14px;
     padding: .1rem .7rem;

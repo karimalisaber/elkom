@@ -1,3 +1,4 @@
+import { Question } from './../../../../store/lookups/questions/model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Actions, ofType } from '@ngrx/effects';
@@ -8,7 +9,7 @@ import { take } from 'rxjs';
 import { SelectLookup } from 'src/app/store/lookups';
 import { getBase64 } from 'src/app/utils/help';
 import { ToastrService } from './../../../../services/toastr.service';
-import { askQuestion, askQuestionSuccess } from './../../../../store/lookups/questions/actions';
+import { askQuestion, askQuestionSuccess, editQuestion } from './../../../../store/lookups/questions/actions';
 import { loadTags } from './../../../../store/lookups/tags/actions';
 
 
@@ -18,19 +19,16 @@ import { loadTags } from './../../../../store/lookups/tags/actions';
   styleUrls: ['./ask-question.component.scss']
 })
 export class AskQuestionComponent implements OnInit {
+  question: Question;
+
   tags$ = this.store.pipe(select((SelectLookup().tags.all)))
 
-  form = this.fb.group({
-    text: ["", Validators.required],
-    tags: [],
-    description: [""],
-    files: []
-  })
+  form
 
   fileList: NzUploadFile[] = [];
   previewImage: string | undefined = '';
   previewVisible = false;
-  
+
   constructor(
     private fb: FormBuilder,
     private modalRef: NzModalRef<AskQuestionComponent>,
@@ -46,6 +44,13 @@ export class AskQuestionComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      text: [ this.question?.text, Validators.required],
+      tags: [this.question?.tags],
+      description: [this.question?.description],
+      files: []
+    })
+
     this.dispatcher()
 
     this.modalRef.updateConfig({
@@ -70,8 +75,40 @@ export class AskQuestionComponent implements OnInit {
     })
   }
 
-
   onSubmit() {
+    if (this.question?.id) {
+      this.editQuestion()
+    } else {
+      this.askQuestion()
+    }
+  }
+
+  editQuestion() {
+    this.setLoading(true)
+
+    let body: any = {}
+
+
+    for (let key in this.form.value) {
+      if (key !== 'files') {
+        body[key] = this.form.value[key]
+      }
+    }
+
+
+    this.store.dispatch(
+      editQuestion({
+        payload: body
+      })
+    )
+
+    this.actions.pipe(ofType(askQuestionSuccess), take(1)).subscribe(res => {
+      this.modalRef.close();
+      this.toastr.success(res.type)
+    })
+  }
+
+  askQuestion() {
     this.setLoading(true)
 
     let body: any = {}
@@ -95,7 +132,7 @@ export class AskQuestionComponent implements OnInit {
       })
     )
 
-    this.actions.pipe(ofType(askQuestionSuccess),take(1)).subscribe(res=>{
+    this.actions.pipe(ofType(askQuestionSuccess), take(1)).subscribe(res => {
       this.modalRef.close();
       this.toastr.success(res.type)
     })
