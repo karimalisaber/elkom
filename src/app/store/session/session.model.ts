@@ -15,6 +15,7 @@ export interface User {
     mobileNumber?: {
         number: string
     },
+    profileUrl: string,
     birthDate?: string,
     gender?: number,
     gradeId?: string

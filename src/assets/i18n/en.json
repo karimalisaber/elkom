@@ -71,5 +71,9 @@
   "addNewCertificate" : "Add New Certificate",
   "chooseFile" : "Choose File",
   "update" : "Update",
-  "editQuestion" : "Edit Question"
+  "editQuestion" : "Edit Question",
+  "emailUpdated" : "Email has been updated.",
+  "userNameUpdated" : "User name has been updated.",
+  "mobileUpdated" : "Mobile has been updated.",
+  "userInfoUpdated" : "User Information has been updated."
 }

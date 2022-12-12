@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, Observable, of } from 'rxjs';
+import { catchError, map, mergeMap, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CustomResponse } from '../../store.interface';
 import * as actions from './actions';
@@ -14,8 +14,9 @@ export class UserAvatarEffect {
         this.actions$.pipe(
             ofType(actions.loadAvatar),
             // take(1),
-            mergeMap(({ }) => this.loadAvatar()
+            mergeMap(({ url}) => this.loadAvatar(url)
                 .pipe(
+                    tap(res=> console.log(res, 'karim')),
                     map((response: any) => actions.loadAvatarSuccess({ response })),
                     catchError((error) => of(actions.loadAvatarFailure({ error })))
                 ),
@@ -23,9 +24,8 @@ export class UserAvatarEffect {
         )
     );
 
-    loadAvatar(): Observable<CustomResponse<any>> {
-        const url = BaseUrl + '/users/profile/avatar'
-        return this.http.get<CustomResponse<any>>(url)
+    loadAvatar(url: string): Observable<any> {
+        return this.http.get(url, {responseType: 'blob' , observe: 'response'})
     }
 
 

@@ -13,6 +13,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import * as fromRoot from 'src/app/store/root.store'
 import { EffectsModule } from '@ngrx/effects';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import * as fromUserInfo from './store/session/index'
 import * as fromLookups from './store/lookups'
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { HttpInterceptor } from './services/interceptors/http.interceptor';
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) : TranslateHttpLoader {
 
     StoreModule.forRoot(fromRoot.reducers),
     StoreModule.forFeature(fromLookups.featureKey, fromLookups.reducers, {}),
+    StoreModule.forFeature(fromUserInfo.featureKey, fromUserInfo.reducers, {}),
     NgxSpinnerModule,
     EffectsModule.forRoot(),
     EffectsModule.forFeature([

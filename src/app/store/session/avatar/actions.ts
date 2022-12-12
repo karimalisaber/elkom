@@ -18,12 +18,14 @@ export const updateAvatarFailure = createAction(
 
 
 export const loadAvatar = createAction(
-    '[Root/Session] loadAvatar'
+    '[Root/Session] loadAvatar',
+    props<{ url: string }>()
+
 );
 
 export const loadAvatarSuccess = createAction(
     '[Root/Session] loadAvatar Success',
-    props<{ response: CustomResponse<string> }>()
+    props<{ response: any }>()
 );
 
 export const loadAvatarFailure = createAction(

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 import { selectStatus } from '../status.interface';
 import { UserAvatarEffect } from './avatar/effects';
 
-export const featureKey = 'session';
+export const featureKey = 'userInfo';
 
 export interface State {
     [fromAvatar.featureKey]: fromAvatar.State;
